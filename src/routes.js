@@ -2,7 +2,7 @@ import React from "react";
 import { isAuthenticated } from "./services/auth";
 
 import SignIn from "./pages/SignIn";
-import Main from "./pages/main";
+import Main from "./pages/Main";
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 

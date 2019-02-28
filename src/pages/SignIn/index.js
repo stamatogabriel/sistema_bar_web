@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import './styles.css';
-import '../../styles/global.css'
 import api from "../../services/api";
 import { login } from "../../services/auth";
+import { Container, Form } from "./styles";
 
 class SignIn extends Component {
   state = {
@@ -33,8 +32,8 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSignIn}>
+      <Container>
+        <Form onSubmit={this.handleSignIn}>
           {this.state.error && <p>{this.state.error}</p>}
           <input
             type="username"
@@ -48,8 +47,8 @@ class SignIn extends Component {
           />
           <button type="submit">Entrar</button>
 
-        </form>
-      </div>
+        </Form>
+      </Container>
     );
   }
 }

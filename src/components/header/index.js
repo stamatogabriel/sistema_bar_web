@@ -1,3 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
+import { Head } from "./styles";
 
-export const Header = () => <header id="main-header">Sistema_Bar</header>;
+class Header extends Component {
+    render() {
+        return (
+
+            <Head>Sistema_Bar</Head>
+            
+        )
+    }
+}
+
+export default Header;

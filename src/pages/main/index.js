@@ -1,12 +1,14 @@
-import React, { Component } from "react";
-import Header from "../main"
+import React, { Component } from 'react';
+import Header from '../../components/Header';
+import {Container} from './styles';
+import Sidenav from '../../components/Sidenav';
 
 class Main extends Component {
     render(){
-        return(
-            <div>
+        return (
+            <Container>
                 <Header />
-            </div>
+            </Container>
         )
     }
 }
