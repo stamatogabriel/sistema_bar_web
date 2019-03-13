@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import Header from '../../components/Header';
-import {Container} from './styles';
-import Sidenav from '../../components/Sidenav';
+import Header from '../../components/header';
+import Register from '../../components/register';
+import { Container } from './styles';
 
-class Main extends Component {
+
+export default class Main extends Component {
     render(){
         return (
             <Container>
                 <Header />
+                <Register />
             </Container>
         )
     }
 }
-
-export default Main;
