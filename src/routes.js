@@ -1,10 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { isAuthenticated } from "./services/auth";
+import { ModalContainer } from "react-router-modal";
 
 import SignIn from "./pages/SignIn";
-import Main from "./pages/main";
+import Main from "./pages/Main";
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
+import "react-router-modal/css/react-router-modal.css";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -21,10 +24,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 const Routes = () => (
   <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={SignIn} />
-      <PrivateRoute path="/app" component={Main} />
-    </Switch>
+    <Fragment>
+      <Switch>
+        <Route exact path="/" component={SignIn} />
+        <PrivateRoute path="/app" component={Main} />
+      </Switch>
+      <ModalContainer />
+    </Fragment>
   </BrowserRouter>
 );
 
