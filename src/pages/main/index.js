@@ -1,46 +1,18 @@
 import React, { Component } from "react";
-import Header from "../../components/Header";
+import Header from "../../components/header";
 import { Container } from "./styles";
-import { ModalRoute } from "react-router-modal";
-import { withRouter } from "react-router-dom";
-
-import Register from "../Register";
+import { withRouter, Link } from "react-router-dom";
 
 class Main extends Component {
   state = {
     component: ""
   };
 
-  
-
-  handleShowRegister = () => {
-    return ;
-  };
-
-  renderButtonAdd() {
-    return (
-          <div>
-            <button onClick={this.handleShowRegister} type="button">
-              Adicionar
-            </button>
-            <button
-              onClick={() => this.setState({ addActivate: false })}
-              className="cancel"
-            >
-              Cancelar
-            </button>
-          </div>
-      );
-  }
-
   render() {
     return (
       <Container>
         <Header />
-        {this.renderButtonAdd()}
-        <ModalRoute 
-
-          component={this.state.component} />
+        <Link to='/register'>Cadastrar Usuário </Link>
       </Container>
     );
   }

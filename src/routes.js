@@ -3,7 +3,8 @@ import { isAuthenticated } from "./services/auth";
 import { ModalContainer } from "react-router-modal";
 
 import SignIn from "./pages/SignIn";
-import Main from "./pages/Main";
+import Main from "./pages/main";
+import Register from './pages/Register'
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -28,6 +29,7 @@ const Routes = () => (
       <Switch>
         <Route exact path="/" component={SignIn} />
         <PrivateRoute path="/app" component={Main} />
+        <PrivateRoute path='/register' component={Register} />
       </Switch>
       <ModalContainer />
     </Fragment>

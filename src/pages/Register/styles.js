@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
 export const Form = styled.form`
   width: 400px;
   background: #fff;
@@ -46,5 +53,8 @@ export const Form = styled.form`
     border: none;
     border-bottom: 1px solid #cdcdcd;
     width: 100%;
+  }
+  .manager {
+    height: 15px !important;
   }
 `;
