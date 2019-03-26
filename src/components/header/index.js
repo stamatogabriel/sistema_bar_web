@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Head } from "./styles";
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
     render() {
         return (
-
-            <Head>Sistema_Bar</Head>
-            
+            <Head>
+                <Link to='/app'>Sistema_Bar</Link>
+            </Head>
         )
     }
 }
