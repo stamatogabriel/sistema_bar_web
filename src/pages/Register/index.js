@@ -5,6 +5,7 @@ import { Form, Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../components/header";
 
+
 class Register extends Component {
   static propTypes = {
     history: PropTypes.shape({
@@ -15,6 +16,7 @@ class Register extends Component {
   state = {
     username: "",
     password: "",
+    confirmPassword: "",
     manager: "",
     error: "",
     sucess: ""
@@ -22,10 +24,15 @@ class Register extends Component {
 
   handleRegister = async e => {
     e.preventDefault();
-    const { username, password, manager } = this.state;
+    const { username, password, confirmPassword, manager } = this.state;
     if (!username || !password) {
       this.setState({
         error: "Preencha todos os campos para cadastro do funcionário"
+      });
+    }
+    if (confirmPassword !== password){
+      this.setState({
+        error: "Senhas digitadas não são iguais. Por favor, tente novamente."
       });
     } else {
       try {
@@ -60,6 +67,11 @@ class Register extends Component {
               type="password"
               placeholder="Senha"
               onChange={e => this.setState({ password: e.target.value })}
+            />
+                        <input
+              type="password"
+              placeholder="Confirme sua senha"
+              onChange={e => this.setState({ confirmPassword: e.target.value })}
             />
             <div>
               <input

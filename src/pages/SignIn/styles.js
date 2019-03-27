@@ -47,5 +47,11 @@ export const Form = styled.form`
     border: 0;
     border-radius: 5px;
     width: 100%;
+    transition: all 0.2s;
+    font-weight: bold;
+
+    &:hover {
+      background: #0344FF;
+    }
   }
 `;

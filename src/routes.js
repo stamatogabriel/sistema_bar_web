@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { isAuthenticated } from "./services/auth";
-import { ModalContainer } from "react-router-modal";
 
 import SignIn from "./pages/SignIn";
 import Main from "./pages/main";
@@ -27,7 +26,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 const Routes = () => (
   <BrowserRouter>
-    <Fragment>
       <Switch>
         <Route exact path="/" component={SignIn} />
         <PrivateRoute path="/app" component={Main} />
@@ -35,8 +33,6 @@ const Routes = () => (
         <PrivateRoute path='/products/create' component={createProduct} />
         <PrivateRoute path='/products' component={showProducts} />
       </Switch>
-      <ModalContainer />
-    </Fragment>
   </BrowserRouter>
 );
 

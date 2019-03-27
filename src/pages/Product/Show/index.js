@@ -39,6 +39,7 @@ class showProducts extends Component {
                             <p>Preço: R$ {product.price}</p>
                             <p>Estoque atual: {product.stock}</p>
                             <p>Estoque mínimo: {product.minStock}</p>
+                            <a href='#'>Opções</a>
                         </article>
                     )
                     )}

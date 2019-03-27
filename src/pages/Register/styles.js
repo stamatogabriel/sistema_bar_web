@@ -47,6 +47,11 @@ export const Form = styled.form`
     border: 0;
     border-radius: 5px;
     width: 100%;
+    transition: all 0.2s;
+    cursor: pointer;
+    &:hover {
+      background: #0344FF;
+    }
   }
   hr {
     margin: 20px 0;

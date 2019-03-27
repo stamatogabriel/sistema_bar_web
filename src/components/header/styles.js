@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Head = styled.header`
-    position: fixed;
+    position: static;
     width: 100%;
     height: 60px;
     background: #0F0EE8;
@@ -11,6 +11,7 @@ export const Head = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
+
 
     a{
         color: white;
