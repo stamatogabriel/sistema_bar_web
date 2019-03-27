@@ -8,19 +8,19 @@ import Header from "../../../components/header";
 class showProducts extends Component {
     static propTypes = {
         history: PropTypes.shape({
-          push: PropTypes.func
+            push: PropTypes.func
         }).isRequired
-      };
+    };
 
     state = {
         products: []
     }
-    
-    componentDidMount(){
+
+    componentDidMount() {
         this.loadProducts();
     };
 
-    loadProducts = async() =>{
+    loadProducts = async () => {
         const response = await api.get('/products');
 
         this.setState({ products: response.data });
@@ -28,20 +28,21 @@ class showProducts extends Component {
         console.log(response)
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <Header />
-                {this.state.products.map(product => {
-                    return(
-                        <Container key={product.id}>
-                            <h2>{product.description}</h2>
-                            <strong>{product.price}</strong>
-                            <strong>{product.stock}</strong>
-                            <strong>{product.minStock}</strong>
-                        </Container>
+                <Container>
+                    {this.state.products.map(product => (
+                        <article key={product.id}>
+                            <strong>{product.description}</strong>
+                            <p>Preço: R$ {product.price}</p>
+                            <p>Estoque atual: {product.stock}</p>
+                            <p>Estoque mínimo: {product.minStock}</p>
+                        </article>
                     )
-                })}
+                    )}
+                </Container>
             </div>
         )
     }
