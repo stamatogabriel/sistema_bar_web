@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import api from "../../../services/api";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
@@ -39,7 +39,7 @@ class showProducts extends Component {
                             <p>Preço: R$ {product.price}</p>
                             <p>Estoque atual: {product.stock}</p>
                             <p>Estoque mínimo: {product.minStock}</p>
-                            <a href='#'>Opções</a>
+                            <Link to={`/products/${product.id}`}>Opções</Link>
                         </article>
                     )
                     )}

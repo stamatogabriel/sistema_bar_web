@@ -12,7 +12,8 @@ class Main extends Component {
     return (
       <Container>
         <Header />
-        <Link to='/register'>Cadastrar Usuário </Link>
+        <Link to='/register'>Cadastrar Usuário </Link><br/>
+        <Link to='/products'>Listar Produtos </Link>
       </Container>
     );
   }

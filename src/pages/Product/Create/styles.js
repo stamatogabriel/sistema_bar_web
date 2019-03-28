@@ -39,15 +39,18 @@ export const Form = styled.form`
       color: #999;
     }
   }
+
   button {
     color: #fff;
     font-size: 16px;
     background: #0F0EE8;
-    height: 56px;
+    height: 45px;
     border: 0;
     border-radius: 5px;
     width: 100%;
   }
+
+
   hr {
     margin: 20px 0;
     border: none;

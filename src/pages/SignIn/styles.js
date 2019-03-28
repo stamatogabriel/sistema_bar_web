@@ -49,7 +49,7 @@ export const Form = styled.form`
     width: 100%;
     transition: all 0.2s;
     font-weight: bold;
-
+    cursor: pointer;
     &:hover {
       background: #0344FF;
     }
