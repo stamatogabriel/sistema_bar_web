@@ -21,23 +21,24 @@ export const Container = styled.div`
     line-height: 24px
   }
 
-  a{
-    height: 42px;
-    border-radius: 5px;
-    border: 2px solid #0F0EE8;
-    background: none;
-    color:  #0F0EE8;
-    margin-top: 10px;
-    font-weight: bold;
+  a {
+    color: #fff;
     font-size: 16px;
-    text-decoration: none;
+    background: #0F0EE8;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.2s;
-    &:hover{
-      color: white;
-      background-color: #0F0EE8;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #0344FF;
+        }
     }
-  }
 `;

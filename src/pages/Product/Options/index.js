@@ -6,7 +6,7 @@ import api from "../../../services/api";
 import Header from "../../../components/header";
 import { Div } from "./styles";
 
-class optionProducts extends Component {
+class OptionProducts extends Component {
   state = {
     product: {}
   };
@@ -17,6 +17,17 @@ class optionProducts extends Component {
     const response = await api.get(`products/${id}`);
 
     this.setState({ product: response.data });
+  }
+
+  handleProductDelete = async e => {
+    const { id } = this.props.match.params;
+    try{
+      await api.delete(`products/${id}`);
+      alert('Produto deletado com sucesso');
+      this.props.history.push("/products");
+    }catch{
+      alert('Algo deu errado. Tente de novo mais tarde');
+    }
   }
 
   render() {
@@ -32,11 +43,11 @@ class optionProducts extends Component {
           <p>Quantidade em estoque: {product.stock}</p>
           <p>Estoque mínimo: {product.minStock}</p>
           <a href={`/edit_products/${product.id}`}>Editar Produto</a>
-          <a href='#' className='excluir'>Excluir Produto</a>
+          <button onClick={this.handleProductDelete} className='excluir'>Excluir Produto</button>
         </Div>
       </div>
     );
   }
 }
 
-export default withRouter(optionProducts);
+export default withRouter(OptionProducts);

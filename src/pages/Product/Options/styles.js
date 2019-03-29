@@ -52,9 +52,25 @@ export const Div = styled.div`
       background: #0344FF;
         }
     }
-    .excluir{
-    background: #FF0000 !important;
+    
+  button {
+    color: #fff;
+    font-size: 16px;
+    background: #FF0000 !important;;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
     &:hover {
       background: #FF530D !important;
-  }
+        }
+    }
 `;

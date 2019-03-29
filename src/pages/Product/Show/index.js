@@ -5,7 +5,7 @@ import { Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
 
-class showProducts extends Component {
+class ShowProducts extends Component {
     static propTypes = {
         history: PropTypes.shape({
             push: PropTypes.func
@@ -49,4 +49,4 @@ class showProducts extends Component {
     }
 }
 
-export default withRouter(showProducts)
+export default withRouter(ShowProducts)

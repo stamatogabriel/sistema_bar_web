@@ -4,10 +4,10 @@ import { isAuthenticated } from "./services/auth";
 import SignIn from "./pages/SignIn";
 import Main from "./pages/main";
 import Register from './pages/Register';
-import createProduct from './pages/Product/Create';
-import showProducts from './pages/Product/Show';
-import optionProducts from './pages/Product/Options';
-import editProducts from './pages/Product/Edit';
+import CreateProduct from './pages/Product/Create';
+import ShowProducts from './pages/Product/Show';
+import OptionProducts from './pages/Product/Options';
+import EditProducts from './pages/Product/Edit';
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -32,11 +32,10 @@ const Routes = () => (
         <Route exact path="/" component={SignIn} />
         <PrivateRoute path="/app" component={Main} />
         <PrivateRoute path='/register' component={Register} />
-        <PrivateRoute path='/edit_products/:id' component={editProducts} />
-        <PrivateRoute path='/create_products' component={createProduct} />
-        <PrivateRoute path='/products/:id' component={optionProducts} />
-        <PrivateRoute path='/products' component={showProducts} />
-
+        <PrivateRoute path='/edit_products/:id' component={EditProducts} />
+        <PrivateRoute path='/create_products' component={CreateProduct} />
+        <PrivateRoute path='/products/:id' component={OptionProducts} />
+        <PrivateRoute path='/products' component={ShowProducts} />
       </Switch>
   </BrowserRouter>
 );

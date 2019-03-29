@@ -5,7 +5,7 @@ import { Form, Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
 
-class createProduct extends Component {
+class CreateProduct extends Component {
   static propTypes = {
     history: PropTypes.shape({
       push: PropTypes.func
@@ -30,7 +30,7 @@ class createProduct extends Component {
       try {
         await api.post("/products", { description, price, stock, minStock });
         this.setState({
-          sucess: "Produto cadastrado com sucesso!"
+          sucess: "Produto cadastrado com sucesso!",
         });
         alert(this.state.sucess);
       } catch {
@@ -78,4 +78,4 @@ class createProduct extends Component {
   }
 }
 
-export default withRouter(createProduct);
+export default withRouter(CreateProduct);
