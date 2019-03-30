@@ -25,7 +25,6 @@ class ShowProducts extends Component {
 
         this.setState({ products: response.data });
 
-        console.log(response)
     }
 
     render() {

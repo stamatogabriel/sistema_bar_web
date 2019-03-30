@@ -10,11 +10,14 @@ class Main extends Component {
 
   render() {
     return (
-      <Container>
+      <div>
         <Header />
-        <Link to='/register'>Cadastrar Usuário </Link><br/>
-        <Link to='/products'>Listar Produtos </Link>
-      </Container>
+        <Container>
+          <Link to='/register'>Cadastrar Usuário </Link>
+          <Link to='/products'>Listar Produtos </Link>
+          <Link to='/tickets'>Cadastrar Comandas</Link>
+        </Container>
+      </div>
     );
   }
 }

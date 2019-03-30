@@ -21,7 +21,6 @@ export const Div = styled.div`
   }
 
   h1 {
-    
     font-size: 40px;
   }
 

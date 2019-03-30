@@ -8,6 +8,9 @@ import CreateProduct from './pages/Product/Create';
 import ShowProducts from './pages/Product/Show';
 import OptionProducts from './pages/Product/Options';
 import EditProducts from './pages/Product/Edit';
+import CreateTickets from './pages/Ticket/Create';
+import ShowTickets from './pages/Ticket/Show';
+import CreateOrders from './pages/Order/Create'
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -36,6 +39,9 @@ const Routes = () => (
         <PrivateRoute path='/create_products' component={CreateProduct} />
         <PrivateRoute path='/products/:id' component={OptionProducts} />
         <PrivateRoute path='/products' component={ShowProducts} />
+        <PrivateRoute path='/create_tickets' component={CreateTickets} />
+        <PrivateRoute path='/tickets' component={ShowTickets} />
+        <PrivateRoute path='/create_orders/:id' component={CreateOrders} />
       </Switch>
   </BrowserRouter>
 );

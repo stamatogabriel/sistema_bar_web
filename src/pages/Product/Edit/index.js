@@ -9,9 +9,7 @@ import { Div } from "./styles";
 class EditProducts extends Component {
   state = {
     product: {},
-    price: '',
-    stock: '',
-    minStock: '',
+    response: {},
     error: '',
     sucess: '',
   };
@@ -21,7 +19,7 @@ class EditProducts extends Component {
 
     const response = await api.get(`products/${id}`);
 
-    this.setState({ product: response.data });
+    this.setState({response: response.data})
   }
 
   handleCancel = async e => {
@@ -34,7 +32,7 @@ class EditProducts extends Component {
 
     const { id } = this.props.match.params;
 
-    let { price, stock, minStock } = this.state;
+    const { price, stock, minStock } = this.state.product;
     if ( !price && !stock && !minStock) {
       this.setState({
         error: "Preencha pelo menos um campo para continuar"
@@ -56,30 +54,30 @@ class EditProducts extends Component {
   };
 
   render() {
-    const { product } = this.state;
+    const { response } = this.state;
 
     return (
       <div>
         <Header />
         <Div>
           <form onSubmit={this.handleEdit}>
-        <h1>{product.description}</h1>
+        <h1>{response.description}</h1>
         </form>
           <hr />
           {this.state.error && <p className='error'>{this.state.error}</p>}
           <p>
             Preço: R$
-            <input type="number" placeholder={product.price} onChange={e => this.setState({ price: e.target.value })}/>
+            <input type="number" placeholder={response.price} onChange={e => this.setState({ product: {price: e.target.value} })}/>
           </p>
           <p>
             Quantidade em estoque:
-            <input type="number" placeholder={product.stock} onChange={e => this.setState({ stock: e.target.value })}/>
+            <input type="number" placeholder={response.stock} onChange={e => this.setState({ product: {stock: e.target.value}})}/>
           </p>
           <p>
             Estoque mínimo: 
-            <input type="number" placeholder={product.minStock} onChange={e => this.setState({ minStock: e.target.value })}/>
+            <input type="number" placeholder={response.minStock} onChange={e => this.setState({ product: {minStock: e.target.value}})}/>
           </p>
-          <button type="submit">Salvar</button>
+          <button type="submit" onClick={this.handleEdit}>Salvar</button>
           <button className="cancelar" onClick={this.handleCancel}>Cancelar</button>
         </Div>
       </div>
