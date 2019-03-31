@@ -37,12 +37,12 @@ class ShowTickets extends Component {
     handleOrderCreate = async (id) => {
         const ticket = await api.get(`ticket/${id}`);
         
-        if (ticket.inUse === true){
+        if (ticket.data.inUse === true){
             alert('Comanda está sendo utilizada. Por favor, escolha outra comanda')
+        }else {
+            this.props.history.push(`/create_orders/${id}`)
         }
-
-        this.props.history.push(`/create_orders/${id}`)
-        
+       
     }
 
 

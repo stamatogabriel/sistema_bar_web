@@ -10,7 +10,8 @@ import OptionProducts from './pages/Product/Options';
 import EditProducts from './pages/Product/Edit';
 import CreateTickets from './pages/Ticket/Create';
 import ShowTickets from './pages/Ticket/Show';
-import CreateOrders from './pages/Order/Create'
+import CreateOrders from './pages/Order/Create';
+import ShowOrders from './pages/Order/Show';
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -42,6 +43,7 @@ const Routes = () => (
         <PrivateRoute path='/create_tickets' component={CreateTickets} />
         <PrivateRoute path='/tickets' component={ShowTickets} />
         <PrivateRoute path='/create_orders/:id' component={CreateOrders} />
+        <PrivateRoute path='/orders/' component={ShowOrders} />
       </Switch>
   </BrowserRouter>
 );

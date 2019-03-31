@@ -15,14 +15,23 @@ class CreateOrder extends Component {
     state = {
         desk: "",
         ticket_id: '',
-        numComanda: ''
+        numComanda: '',
+        products: [],
+        product_orders: [{
+            order_id: '',
+            product_id: '',
+            qnt: ''
+        }],
+        addActivate: false
     };
 
     async componentDidMount() {
         const { id } = this.props.match.params;
+
         const ticket = await api.get(`ticket/${id}`)
-        await this.setState({ ticket_id: ticket.data.id, numComanda: ticket.data.numComanda })
-        console.log(ticket)
+
+        this.setState({ ticket_id: ticket.data.id, numComanda: ticket.data.numComanda })
+
     }
 
     handleCreate = async e => {
@@ -47,6 +56,30 @@ class CreateOrder extends Component {
         }
     };
 
+    async handleAddProduct() {
+        const response = await api.get('/products');
+        this.setState({ products: response.data });
+        console.log(response)
+
+        return (
+                <form>
+                    <select>
+                        {this.state.products.map(product => (
+                            <option key={product.id}
+                                value={product.id}>
+                                {product.description}
+                            </option>
+                        ))}
+                    </select>
+                    <input
+                        type="number"
+                        placeholder="Quantidade"
+                        onChange={e => this.setState({ qnt: e.target.value })}
+                    />
+                </form>
+            )
+    }
+
     render() {
         return (
             <div>
@@ -62,7 +95,7 @@ class CreateOrder extends Component {
                             placeholder="Número da mesa"
                             onChange={e => this.setState({ desk: e.target.value })}
                         />
-                        <button type="submit">Fazer Pedido</button>
+                        <button type="submit" onClick={this.setState({ addActivate: true })}>Fazer Pedido</button>
                     </Form>
                 </Container>
             </div>

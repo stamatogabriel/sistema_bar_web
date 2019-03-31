@@ -40,6 +40,17 @@ export const Form = styled.form`
     }
   }
 
+  select {
+    flex: 1;
+    height: 46px;
+    margin-bottom: 15px;
+    padding: 0 20px;
+    color: #777;
+    font-size: 15px;
+    width: 100%;
+    border: 1px solid #ddd;
+   }
+
   button {
     color: #fff;
     font-size: 16px;
