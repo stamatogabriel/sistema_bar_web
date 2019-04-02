@@ -59,6 +59,7 @@ export const Form = styled.form`
     border: 0;
     border-radius: 5px;
     width: 100%;
+    margin: 10px;
   }
 
   hr {
