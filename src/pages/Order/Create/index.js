@@ -16,15 +16,8 @@ class CreateOrder extends Component {
     desk: "",
     ticket_id: "",
     numComanda: "",
-    products: [],
-    order_products: [
-      {
-        order_id: "",
-        product_id: "",
-        qnt: ""
-      }
-    ],
-    order: ""
+    order: "",
+    inUse: ''
   };
 
   async componentDidMount() {
@@ -39,17 +32,6 @@ class CreateOrder extends Component {
       inUse: ticket.data.inUse,
       products: products.data
     });
-
-    console.log(products);
-  }
-
-  handleAddProduct = async (product_id, qnt) => {
-    this.setState({
-      order_products: [
-        ...this.state.order_products,
-        { order_id: this.state.order.id, product_id, qnt }
-      ]
-    })
   }
 
   handleCreate = async e => {
@@ -69,8 +51,8 @@ class CreateOrder extends Component {
       this.props.history.push("/tickets");
     } else {
       try {
-        const data = await api.post("/order", { desk, ticket_id });
-        this.setState({ order: data.data });
+        const order = await api.post("/order", { desk, ticket_id });
+        this.props.history.push(`/edit_orders/${order.data.id}`)
       } catch {
         this.setState({
           error:
@@ -96,29 +78,7 @@ class CreateOrder extends Component {
               onChange={e => this.setState({ desk: e.target.value })}
             />
 
-            {this.state.order_products.map((product_id, qnt) => (
-              <div>
-                <select>
-                  {this.state.products.map(product => (
-                    <option
-                      key={product.id}
-                      value={product.id}
-                      onChange={e => (product_id = e.target.value)}
-                    >
-                      {product.description}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="number"
-                  placeholder="Quantidade"
-                  onChange={e => (qnt = e.target.value)}
-                />
-                <button onClick={this.handleAddProduct}>Adicionar Produto</button>
-              </div>
-            ))}
-
-            <button onChange={() => {}}>Fazer Pedido</button>
+            <button type='submit'>Fazer Pedido</button>
           </Form>
         </Container>
       </div>
@@ -127,18 +87,3 @@ class CreateOrder extends Component {
 }
 
 export default withRouter(CreateOrder);
-
-/*<div>
-        <select>
-          {this.state.products.map(product => (
-            <option key={product.id} value={product.id}>
-              {product.description}
-            </option>
-          ))}
-        </select>
-        <input
-          type="number"
-          placeholder="Número da mesa"
-          onChange={e => this.setState({ desk: e.target.value })}
-        />
-      </div>*/

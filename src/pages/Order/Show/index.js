@@ -41,12 +41,15 @@ class ShowOrders extends Component {
                 <Container>
                     <h1>Pedidos</h1>
                     {this.state.orders.map(order => (
+                        <div>
                         <article key={order.id}>
                             <strong>Pedido nº {order.id}</strong>
                             <p>Mesa: {order.desk}</p>
                             <p>Estoque atual: </p>
                             <p>Estoque mínimo: </p>
                         </article>
+                        <button onClick={() => this.handleOrderDelete(order.id)}>Remover Ordem</button>
+                        </div>
                     )
                     )}
                 </Container>

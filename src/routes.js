@@ -12,6 +12,7 @@ import CreateTickets from './pages/Ticket/Create';
 import ShowTickets from './pages/Ticket/Show';
 import CreateOrders from './pages/Order/Create';
 import ShowOrders from './pages/Order/Show';
+import EditOrders from './pages/Order/Edit'
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -44,6 +45,7 @@ const Routes = () => (
         <PrivateRoute path='/tickets' component={ShowTickets} />
         <PrivateRoute path='/create_orders/:id' component={CreateOrders} />
         <PrivateRoute path='/orders/' component={ShowOrders} />
+        <PrivateRoute path='/edit_orders/:id' component={EditOrders} />
       </Switch>
   </BrowserRouter>
 );
