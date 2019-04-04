@@ -14,10 +14,18 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   img {
     width: 100px;
     margin: 10px 0 40px;
   }
+
+  div {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
   p {
     color: #ff3333;
     margin-bottom: 15px;
@@ -59,7 +67,8 @@ export const Form = styled.form`
     border: 0;
     border-radius: 5px;
     width: 100%;
-    margin: 10px;
+    margin: 5px;
+    
   }
 
   hr {
