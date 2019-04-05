@@ -20,7 +20,8 @@ class EditOrder extends Component {
     products: [],
     ticket: "",
     error: "",
-    sucess: ''
+    sucess: '',
+    product_orders: []
   };
 
 
@@ -56,13 +57,14 @@ async componentDidMount() {
     
     await api.post(`/order/request/${order_id}`, {qnt, order_id, product_id})
     const order = await api.get(`/order/${order_id}`);
-    this.setState({order: order.data})
-    console.log(order.data);
-    this.state.order.order_products.map(order_product => (
-      console.log(order_product)
-    ))
-
+    this.setState({order: order.data[0]})
+    this.setState({product_orders: order.data[0].product_orders})
+    this.state.product_orders.map(product_order => console.log(product_order))
   };
+
+  showProduct = (id) => {
+    this.state.products.map(product => (product.id === id) ? product.description : null)
+  }
 
   render() {
     return (
@@ -95,9 +97,14 @@ async componentDidMount() {
               <button type='submit' onClick={this.handleAddProduct}>Adicionar Produto</button>
             </div>
           </Form>
-        </Container>
-        <Container>
-                
+          <aside>
+        {this.state.product_orders.map(product_order => (
+                <div key={product_order.id}>
+                <strong>{() => this.showProduct(product_order.product_id)}</strong>
+                <p>R$ {product_order.total}</p>
+                </div>
+              ))}
+        </aside>
         </Container>
       </div>
     );
