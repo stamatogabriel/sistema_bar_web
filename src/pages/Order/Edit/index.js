@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import api from "../../../services/api";
 import { withRouter } from "react-router-dom";
-import { Form, Container } from "./styles";
+import { Form, Container, Aside } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
 
@@ -11,7 +11,7 @@ class EditOrder extends Component {
       push: PropTypes.func
     }).isRequired
   };
-  
+
   state = {
     order_id: "",
     product_id: "",
@@ -20,16 +20,15 @@ class EditOrder extends Component {
     products: [],
     ticket: "",
     error: "",
-    sucess: '',
+    sucess: "",
     product_orders: []
   };
 
+  handleSelect(e) {
+    this.setState({ product_id: e.target.value });
+  }
 
-handleSelect(e) {
-  this.setState({product_id: e.target.value})
-}
-
-async componentDidMount() {
+  async componentDidMount() {
     const { id } = this.props.match.params;
 
     const order = await api.get(`order/${id}`);
@@ -44,27 +43,30 @@ async componentDidMount() {
     this.setState({ order_id: id });
   }
 
-  handleSelect = (e) => {
+  handleSelect = e => {
     e.preventDefault();
-    this.setState({product_id: e.target.value})
-  }
+    this.setState({ product_id: e.target.value });
+  };
 
-  handleAddProduct = async (e) => {
+  handleAddProduct = async e => {
     e.preventDefault();
 
     const { order_id, product_id, qnt } = this.state;
 
-    
-    await api.post(`/order/request/${order_id}`, {qnt, order_id, product_id})
+    await api.post(`/order/request/${order_id}`, { qnt, order_id, product_id });
     const order = await api.get(`/order/${order_id}`);
-    this.setState({order: order.data[0]})
-    this.setState({product_orders: order.data[0].product_orders})
-    this.state.product_orders.map(product_order => console.log(product_order))
+    this.setState({ order: order.data[0] });
+    this.setState({ product_orders: order.data[0].product_orders });
+    console.log(this.state.order);
   };
 
-  showProduct = (id) => {
-    this.state.products.map(product => (product.id === id) ? product.description : null)
-  }
+  showProduct = id => {
+    const { products } = this.state;
+    const description = products.map(product =>
+      product.id === id ? product.description : null
+    );
+    return description;
+  };
 
   render() {
     return (
@@ -79,12 +81,11 @@ async componentDidMount() {
             {this.state.error && <p>{this.state.error}</p>}
             <div>
               <select value={this.state.value} onChange={this.handleSelect}>
-              <option value="" disabled selected hidden>Escolha o produto</option>
-              {this.state.products.map(product => (
-                  <option
-                    key={product.id}
-                    value={product.id}
-                  >
+                <option value="" disabled selected hidden>
+                  Escolha o produto
+                </option>
+                {this.state.products.map(product => (
+                  <option key={product.id} value={product.id}>
                     {product.description}
                   </option>
                 ))}
@@ -94,17 +95,27 @@ async componentDidMount() {
                 placeholder="Quantidade"
                 onChange={e => this.setState({ qnt: e.target.value })}
               />
-              <button type='submit' onClick={this.handleAddProduct}>Adicionar Produto</button>
+              <button type="submit" onClick={this.handleAddProduct}>
+                Adicionar Produto
+              </button>
             </div>
           </Form>
-          <aside>
-        {this.state.product_orders.map(product_order => (
+          <Aside>
+            <ul>
+              {this.state.product_orders.map(product_order => (
                 <div key={product_order.id}>
-                <strong>{() => this.showProduct(product_order.product_id)}</strong>
-                <p>R$ {product_order.total}</p>
+                  <li>
+                    <strong>
+                      {this.showProduct(product_order.product_id)}
+                    </strong>
+                  </li>
+                  <li>Quantidade: {product_order.qnt}</li>
+                  <li>R$ {product_order.total}</li>
                 </div>
               ))}
-        </aside>
+            </ul>
+            <strong>Total da Comanda: {this.state.order.total_comanda}</strong>
+          </Aside>
         </Container>
       </div>
     );

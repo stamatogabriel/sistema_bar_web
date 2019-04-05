@@ -22,8 +22,8 @@ export const Form = styled.form`
 
   div {
     display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   p {
@@ -57,18 +57,17 @@ export const Form = styled.form`
     font-size: 15px;
     width: 100%;
     border: 1px solid #ddd;
-   }
+  }
 
   button {
     color: #fff;
     font-size: 16px;
-    background: #0F0EE8;
+    background: #0f0ee8;
     height: 45px;
     border: 0;
     border-radius: 5px;
     width: 100%;
     margin: 5px;
-    
   }
 
   hr {
@@ -76,5 +75,28 @@ export const Form = styled.form`
     border: none;
     border-bottom: 1px solid #cdcdcd;
     width: 100%;
+  }
+`;
+
+export const Aside = styled.aside`
+  width: 400px;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  div {
+    background: #fff;
+    display: block;
+    position: absolute;
+    margin: auto;
+    padding: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #999;
+    margin-top: 5px;
+    line-height: 24px;
   }
 `;
