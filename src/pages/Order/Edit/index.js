@@ -11,7 +11,7 @@ class EditOrder extends Component {
       push: PropTypes.func
     }).isRequired
   };
-
+  
   state = {
     order_id: "",
     product_id: "",
@@ -23,7 +23,12 @@ class EditOrder extends Component {
     sucess: ''
   };
 
-  async componentDidMount() {
+
+handleSelect(e) {
+  this.setState({product_id: e.target.value})
+}
+
+async componentDidMount() {
     const { id } = this.props.match.params;
 
     const order = await api.get(`order/${id}`);
@@ -38,18 +43,25 @@ class EditOrder extends Component {
     this.setState({ order_id: id });
   }
 
+  handleSelect = (e) => {
+    e.preventDefault();
+    this.setState({product_id: e.target.value})
+  }
+
   handleAddProduct = async (e) => {
     e.preventDefault();
 
     const { order_id, product_id, qnt } = this.state;
 
-    if (!qnt || !order_id || !product_id){
-        alert('Verifique as informações fornecidas e tente de novo.');
-}else {
-    const order = await api.post(`/order/request/${order_id}`)
+    
+    await api.post(`/order/request/${order_id}`, {qnt, order_id, product_id})
+    const order = await api.get(`/order/${order_id}`);
+    this.setState({order: order.data})
+    console.log(order.data);
+    this.state.order.order_products.map(order_product => (
+      console.log(order_product)
+    ))
 
-    console.log(order);
-}
   };
 
   render() {
@@ -64,12 +76,12 @@ class EditOrder extends Component {
             <hr />
             {this.state.error && <p>{this.state.error}</p>}
             <div>
-              <select>
-                {this.state.products.map(product => (
+              <select value={this.state.value} onChange={this.handleSelect}>
+              <option value="" disabled selected hidden>Escolha o produto</option>
+              {this.state.products.map(product => (
                   <option
                     key={product.id}
                     value={product.id}
-                    onChange={e => this.setState({ product_id: e.target.value })}
                   >
                     {product.description}
                   </option>
@@ -80,10 +92,12 @@ class EditOrder extends Component {
                 placeholder="Quantidade"
                 onChange={e => this.setState({ qnt: e.target.value })}
               />
-              <button onClick={this.handleAddProduct}>Adicionar Produto</button>
-              <button onClick={() => {}}>Remover Produto</button>
+              <button type='submit' onClick={this.handleAddProduct}>Adicionar Produto</button>
             </div>
           </Form>
+        </Container>
+        <Container>
+                
         </Container>
       </div>
     );
