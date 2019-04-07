@@ -1,6 +1,9 @@
 import React from "react";
 import { isAuthenticated } from "./services/auth";
 
+import { ModalContainer } from "react-router-modal";
+import "react-router-modal/css/react-router-modal.css";
+
 import SignIn from "./pages/SignIn";
 import Main from "./pages/main";
 import Register from './pages/Register';
@@ -47,6 +50,7 @@ const Routes = () => (
         <PrivateRoute path='/orders/' component={ShowOrders} />
         <PrivateRoute path='/edit_orders/:id' component={EditOrders} />
       </Switch>
+      <ModalContainer />
   </BrowserRouter>
 );
 

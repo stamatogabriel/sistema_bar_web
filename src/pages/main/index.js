@@ -4,9 +4,6 @@ import { Container } from "./styles";
 import { withRouter, Link } from "react-router-dom";
 
 class Main extends Component {
-  state = {
-    component: ""
-  };
 
   render() {
     return (

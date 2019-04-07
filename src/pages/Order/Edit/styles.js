@@ -1,14 +1,82 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 600px;
+  margin: 50px auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  flex-direction: column;
+  align-items: stretch;
+
+  ul {
+  list-style: none;
+  color: #777;
+  width: 400px;
+  padding: 20px;
+  margin: 10px;
+
+  div{
+    background: #fff;
+    border-radius: 5px;
+    width: 400px;
+  }
+}
+
+  li {
+    margin: 5px;
+    padding: 5px;
+    
+  }
+
+  .button-containner{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .delete {
+    color: #fff;
+    font-size: 16px;
+    background: #ff0000;
+    height: 35px;
+    border: 0;
+    border-radius: 5px;
+    width: 50%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #FF530D;
+    }
+  }
+
+  .edit {
+    color: #fff;
+    font-size: 16px;
+    background: #004008;
+    height: 35px;
+    border: 0;
+    border-radius: 5px;
+    width: 50%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #008011;
+    }
+  }
 `;
 
 export const Form = styled.form`
-  width: 400px;
+  width: 450px;
   background: #fff;
   padding: 20px;
   display: flex;
@@ -75,28 +143,5 @@ export const Form = styled.form`
     border: none;
     border-bottom: 1px solid #cdcdcd;
     width: 100%;
-  }
-`;
-
-export const Aside = styled.aside`
-  width: 400px;
-  background: #fff;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-
-  div {
-    background: #fff;
-    display: block;
-    position: absolute;
-    margin: auto;
-    padding: 10px;
-  }
-
-  p {
-    font-size: 16px;
-    color: #999;
-    margin-top: 5px;
-    line-height: 24px;
   }
 `;

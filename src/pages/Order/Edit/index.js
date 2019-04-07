@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import api from "../../../services/api";
 import { withRouter } from "react-router-dom";
-import { Form, Container, Aside } from "./styles";
+import { Form, Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
+import { ModalContainer } from "react-router-modal";
+import "react-router-modal/css/react-router-modal.css";
 
 class EditOrder extends Component {
   static propTypes = {
@@ -41,6 +43,24 @@ class EditOrder extends Component {
     this.setState({ ticket: ticket.data });
 
     this.setState({ order_id: id });
+
+    this.setState({ product_orders: order.data[0].product_orders });
+  }
+
+  handleDeleteProduct = async (id) => {
+    try{
+      await api.delete(`request/${id}`);
+      alert('Pedido deletado com sucesso');
+
+      const order = await api.get(`order/${this.state.order.id}`);
+      this.setState({ order: order.data[0] });
+
+      this.componentDidMount();
+      console.log(this.state.order.total_comanda)
+    }catch{
+      alert('Algo deu errado. Tente de novo mais tarde');
+    }
+
   }
 
   handleSelect = e => {
@@ -57,7 +77,6 @@ class EditOrder extends Component {
     const order = await api.get(`/order/${order_id}`);
     this.setState({ order: order.data[0] });
     this.setState({ product_orders: order.data[0].product_orders });
-    console.log(this.state.order);
   };
 
   showProduct = id => {
@@ -100,7 +119,7 @@ class EditOrder extends Component {
               </button>
             </div>
           </Form>
-          <Aside>
+          <div>
             <ul>
               {this.state.product_orders.map(product_order => (
                 <div key={product_order.id}>
@@ -111,12 +130,17 @@ class EditOrder extends Component {
                   </li>
                   <li>Quantidade: {product_order.qnt}</li>
                   <li>R$ {product_order.total}</li>
+                  <div className='button-containner'>
+                  <button className='edit' onClick={() => {}}>Editar Produto</button>
+                  <button className='delete' onClick={() => {this.handleDeleteProduct(product_order.id)}}>Deletar Produto</button>
+                  </div>
                 </div>
               ))}
             </ul>
-            <strong>Total da Comanda: {this.state.order.total_comanda}</strong>
-          </Aside>
+            <strong>Total da Comanda: R$ {this.state.order.total_comanda}</strong>
+          </div>
         </Container>
+
       </div>
     );
   }
