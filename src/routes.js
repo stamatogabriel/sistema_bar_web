@@ -1,9 +1,6 @@
 import React from "react";
 import { isAuthenticated } from "./services/auth";
 
-import { ModalContainer } from "react-router-modal";
-import "react-router-modal/css/react-router-modal.css";
-
 import SignIn from "./pages/SignIn";
 import Main from "./pages/main";
 import Register from './pages/Register';
@@ -16,6 +13,7 @@ import ShowTickets from './pages/Ticket/Show';
 import CreateOrders from './pages/Order/Create';
 import ShowOrders from './pages/Order/Show';
 import EditOrders from './pages/Order/Edit'
+import EditProductsOrder from './pages/Order/EditProduct'
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -35,6 +33,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 const Routes = () => (
+  
   <BrowserRouter>
       <Switch>
         <Route exact path="/" component={SignIn} />
@@ -49,8 +48,9 @@ const Routes = () => (
         <PrivateRoute path='/create_orders/:id' component={CreateOrders} />
         <PrivateRoute path='/orders/' component={ShowOrders} />
         <PrivateRoute path='/edit_orders/:id' component={EditOrders} />
+        <PrivateRoute path='/edit_products-order/:id' component={EditProductsOrder} />
       </Switch>
-      <ModalContainer />
+
   </BrowserRouter>
 );
 

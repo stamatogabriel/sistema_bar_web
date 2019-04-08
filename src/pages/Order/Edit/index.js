@@ -4,14 +4,12 @@ import { withRouter } from "react-router-dom";
 import { Form, Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
-import { ModalContainer } from "react-router-modal";
-import "react-router-modal/css/react-router-modal.css";
 
 class EditOrder extends Component {
   static propTypes = {
     history: PropTypes.shape({
       push: PropTypes.func
-    }).isRequired
+    }).isRequired,
   };
 
   state = {
@@ -79,6 +77,10 @@ class EditOrder extends Component {
     this.setState({ product_orders: order.data[0].product_orders });
   };
 
+  handleEditProductOrder = (id) => {
+    this.props.history.push(`/edit_products-order/${id}`)
+  }
+
   showProduct = id => {
     const { products } = this.state;
     const description = products.map(product =>
@@ -88,6 +90,7 @@ class EditOrder extends Component {
   };
 
   render() {
+
     return (
       <div>
         <Header />
@@ -131,7 +134,7 @@ class EditOrder extends Component {
                   <li>Quantidade: {product_order.qnt}</li>
                   <li>R$ {product_order.total}</li>
                   <div className='button-containner'>
-                  <button className='edit' onClick={() => {}}>Editar Produto</button>
+                  <button className='edit' onClick={() => {this.handleEditProductOrder(product_order.id)}}>Editar Produto</button>
                   <button className='delete' onClick={() => {this.handleDeleteProduct(product_order.id)}}>Deletar Produto</button>
                   </div>
                 </div>
