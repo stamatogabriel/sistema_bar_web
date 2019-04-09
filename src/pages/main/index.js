@@ -13,6 +13,7 @@ class Main extends Component {
           <Link to='/register'>Cadastrar Usuário </Link>
           <Link to='/products'>Listar Produtos </Link>
           <Link to='/tickets'>Cadastrar Comandas</Link>
+          <Link to='/orders'>Ordens</Link>
         </Container>
       </div>
     );

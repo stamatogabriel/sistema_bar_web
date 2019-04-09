@@ -9,7 +9,7 @@ class EditOrder extends Component {
   static propTypes = {
     history: PropTypes.shape({
       push: PropTypes.func
-    }).isRequired,
+    }).isRequired
   };
 
   state = {
@@ -45,21 +45,20 @@ class EditOrder extends Component {
     this.setState({ product_orders: order.data[0].product_orders });
   }
 
-  handleDeleteProduct = async (id) => {
-    try{
+  handleDeleteProduct = async id => {
+    try {
       await api.delete(`request/${id}`);
-      alert('Pedido deletado com sucesso');
+      alert("Pedido deletado com sucesso");
 
       const order = await api.get(`order/${this.state.order.id}`);
       this.setState({ order: order.data[0] });
 
       this.componentDidMount();
-      console.log(this.state.order.total_comanda)
-    }catch{
-      alert('Algo deu errado. Tente de novo mais tarde');
+      console.log(this.state.order.total_comanda);
+    } catch {
+      alert("Algo deu errado. Tente de novo mais tarde");
     }
-
-  }
+  };
 
   handleSelect = e => {
     e.preventDefault();
@@ -77,9 +76,19 @@ class EditOrder extends Component {
     this.setState({ product_orders: order.data[0].product_orders });
   };
 
-  handleEditProductOrder = (id) => {
-    this.props.history.push(`/edit_products-order/${id}`)
-  }
+  handleOrderDelete = async (id) => {
+    try {
+      await api.delete(`order/${id}`);
+      alert("Pedido deletado com sucesso");
+      this.props.history.push("/orders");
+    } catch {
+      alert("Algo deu errado. Tente de novo mais tarde");
+    }
+  };
+
+  handleEditProductOrder = id => {
+    this.props.history.push(`/edit_products-order/${id}`);
+  };
 
   showProduct = id => {
     const { products } = this.state;
@@ -90,7 +99,6 @@ class EditOrder extends Component {
   };
 
   render() {
-
     return (
       <div>
         <Header />
@@ -117,9 +125,17 @@ class EditOrder extends Component {
                 placeholder="Quantidade"
                 onChange={e => this.setState({ qnt: e.target.value })}
               />
-              <button type="submit" onClick={this.handleAddProduct}>
-                Adicionar Produto
-              </button>
+              <div className="button-containner">
+                <button type="submit" onClick={this.handleAddProduct}>
+                  Adicionar Produto
+                </button>
+                <button
+                  className="delete-order"
+                  onClick={() => this.handleOrderDelete(this.state.order_id)}
+                >
+                  Cancelar Pedido
+                </button>
+              </div>
             </div>
           </Form>
           <div>
@@ -133,17 +149,24 @@ class EditOrder extends Component {
                   </li>
                   <li>Quantidade: {product_order.qnt}</li>
                   <li>R$ {product_order.total}</li>
-                  <div className='button-containner'>
-                  <button className='edit' onClick={() => {this.handleEditProductOrder(product_order.id)}}>Editar Produto</button>
-                  <button className='delete' onClick={() => {this.handleDeleteProduct(product_order.id)}}>Deletar Produto</button>
+                  <div className="button-containner">
+                    <button
+                      className="delete"
+                      onClick={() => {
+                        this.handleDeleteProduct(product_order.id);
+                      }}
+                    >
+                      Deletar Produto
+                    </button>
                   </div>
                 </div>
               ))}
             </ul>
-            <strong>Total da Comanda: R$ {this.state.order.total_comanda}</strong>
+            <strong>
+              Total da Comanda: R$ {this.state.order.total_comanda}
+            </strong>
           </div>
         </Container>
-
       </div>
     );
   }

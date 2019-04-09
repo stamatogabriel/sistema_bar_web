@@ -10,14 +10,39 @@ div {
   border: 1px solid #ddd;
 }
 
-  button {
+.button-containner {
+  border: none;
+}
+
+.edit {
+    color: #fff;
+    font-size: 16px;
+    background: #004002;
+    height: 35px;
+    border: 0;
+    border-radius: 5px;
+    width: 50%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #008004;
+    }
+  }
+
+  .delete {
     color: #fff;
     font-size: 16px;
     background: #ff0000;
-    height: 45px;
+    height: 35px;
     border: 0;
     border-radius: 5px;
-    width: 100%;
+    width: 50%;
     transition: all 0.2s;
     font-weight: bold;
     margin: 5px;
@@ -64,4 +89,11 @@ div {
       background: #0344FF;
         }
     }
+
+    .button-containner{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 `;
