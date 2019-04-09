@@ -24,10 +24,6 @@ class EditOrder extends Component {
     product_orders: []
   };
 
-  handleSelect(e) {
-    this.setState({ product_id: e.target.value });
-  }
-
   async componentDidMount() {
     const { id } = this.props.match.params;
 
@@ -54,7 +50,6 @@ class EditOrder extends Component {
       this.setState({ order: order.data[0] });
 
       this.componentDidMount();
-      console.log(this.state.order.total_comanda);
     } catch {
       alert("Algo deu errado. Tente de novo mais tarde");
     }
@@ -84,10 +79,6 @@ class EditOrder extends Component {
     } catch {
       alert("Algo deu errado. Tente de novo mais tarde");
     }
-  };
-
-  handleEditProductOrder = id => {
-    this.props.history.push(`/edit_products-order/${id}`);
   };
 
   showProduct = id => {
@@ -131,7 +122,7 @@ class EditOrder extends Component {
                 </button>
                 <button
                   className="delete-order"
-                  onClick={() => this.handleOrderDelete(this.state.order_id)}
+                  onClick={() => {this.handleOrderDelete(this.state.order_id)}}
                 >
                   Cancelar Pedido
                 </button>

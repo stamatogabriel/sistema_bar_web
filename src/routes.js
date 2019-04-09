@@ -46,7 +46,7 @@ const Routes = () => (
         <PrivateRoute path='/create_tickets' component={CreateTickets} />
         <PrivateRoute path='/tickets' component={ShowTickets} />
         <PrivateRoute path='/create_orders/:id' component={CreateOrders} />
-        <PrivateRoute path='/orders/' component={ShowOrders} />
+        <PrivateRoute path='/orders' component={ShowOrders} />
         <PrivateRoute path='/edit_orders/:id' component={EditOrders} />
       </Switch>
 

@@ -10,10 +10,14 @@ class Main extends Component {
       <div>
         <Header />
         <Container>
+          <div className='button-containner'>
           <Link to='/register'>Cadastrar Usuário </Link>
           <Link to='/products'>Listar Produtos </Link>
-          <Link to='/tickets'>Cadastrar Comandas</Link>
+          </div>
+          <div className='button-containner'>
+          <Link to='/tickets'>Listar Comandas</Link>
           <Link to='/orders'>Ordens</Link>
+          </div>
         </Container>
       </div>
     );

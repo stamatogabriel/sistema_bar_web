@@ -3,18 +3,26 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
+  
+  .button-containner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
   a{
     color: #fff;
-    font-size: 16px;
+    font-size: 20px;
     background: #0F0EE8;
-    height: 45px;
-    border: 0;
+    height: 80px;
     border-radius: 5px;
     width: 50%;
     transition: all 0.2s;
     font-weight: bold;
-    margin: 5px;
+    margin: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
