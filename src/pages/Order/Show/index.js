@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import api from "../../../services/api";
 import { withRouter } from "react-router-dom";
 import { Container } from "./styles";
+import { distanceInWords } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
 
@@ -20,7 +22,6 @@ class ShowOrders extends Component {
     const response = await api.get("order");
 
     this.setState({ orders: response.data });
-    console.log(this.state.orders);
   }
 
   handleOrderDelete = async id => {
@@ -50,12 +51,14 @@ class ShowOrders extends Component {
         <Container>
           <h1>Pedidos</h1>
           {this.state.orders.map(order => (
+            !order.close && (
             <div key={order.id}>
               <article>
                 <strong>Pedido nº {order.id}</strong>
                 <p>Mesa: {order.desk}</p>
-                <p>Estoque atual: </p>
-                <p>Tempo de consumo: </p>
+                <p>Tempo de consumo:{distanceInWords(order.created_at, new Date(), {
+            locale: pt
+          })}</p>
               </article>
               <div className="button-containner">
               <button className='edit' onClick={() => this.handleOrderEdit(order.id)}>
@@ -64,9 +67,12 @@ class ShowOrders extends Component {
                 <button className='delete' onClick={() => this.handleOrderDelete(order.id)}>
                   Cancelar Ordem
                 </button>
+                <button className='pay' onClick={() => this.props.history.push(`payment/${order.id}`)}>
+                  Encerrar Ordem
+                </button>
               </div>
             </div>
-          ))}
+          )))}
         </Container>
       </div>
     );

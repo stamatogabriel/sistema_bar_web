@@ -21,7 +21,7 @@ div {
     height: 35px;
     border: 0;
     border-radius: 5px;
-    width: 50%;
+    width: 30%;
     transition: all 0.2s;
     font-weight: bold;
     margin: 5px;
@@ -42,7 +42,7 @@ div {
     height: 35px;
     border: 0;
     border-radius: 5px;
-    width: 50%;
+    width: 30%;
     transition: all 0.2s;
     font-weight: bold;
     margin: 5px;
@@ -56,6 +56,26 @@ div {
     }
   }
 
+  .pay {
+    color: #fff;
+    font-size: 16px;
+    background: #FFC800;
+    height: 35px;
+    border: 0;
+    border-radius: 5px;
+    width: 30%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #FFFC28;
+    }
+  }
   article{
     border-radius: 5px;
     padding: 20px;

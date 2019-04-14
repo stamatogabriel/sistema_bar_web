@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "../../components/header";
 import { Container } from "./styles";
 import { withRouter, Link } from "react-router-dom";
+import {} from 'react-icons/'
 
 class Main extends Component {
 
