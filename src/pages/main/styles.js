@@ -6,6 +6,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: stretch;
 
+  span{
+    margin: 20px;
+  }
+
   
   .button-containner {
     display: flex;

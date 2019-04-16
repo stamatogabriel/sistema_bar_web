@@ -52,27 +52,27 @@ class ShowOrders extends Component {
           <h1>Pedidos</h1>
           {this.state.orders.map(order => (
             !order.close && (
-            <div key={order.id}>
-              <article>
-                <strong>Pedido nº {order.id}</strong>
-                <p>Mesa: {order.desk}</p>
-                <p>Tempo de consumo:{distanceInWords(order.created_at, new Date(), {
-            locale: pt
-          })}</p>
-              </article>
-              <div className="button-containner">
-              <button className='edit' onClick={() => this.handleOrderEdit(order.id)}>
-                  Editar Ordem
+              <div key={order.id}>
+                <article>
+                  <strong>Pedido nº {order.id}</strong>
+                  <p>Mesa: {order.desk}</p>
+                  <p>Tempo de consumo: {distanceInWords(order.created_at, new Date(), {
+                    locale: pt
+                  })}</p>
+                </article>
+                <div className="button-containner">
+                  <button className='edit' onClick={() => this.handleOrderEdit(order.id)}>
+                    Editar Ordem
                 </button>
-                <button className='delete' onClick={() => this.handleOrderDelete(order.id)}>
-                  Cancelar Ordem
+                  <button className='delete' onClick={() => this.handleOrderDelete(order.id)}>
+                    Cancelar Ordem
                 </button>
-                <button className='pay' onClick={() => this.props.history.push(`payment/${order.id}`)}>
-                  Encerrar Ordem
+                  <button className='pay' onClick={() => this.props.history.push(`payment/${order.id}`)}>
+                    Encerrar Ordem
                 </button>
+                </div>
               </div>
-            </div>
-          )))}
+            )))}
         </Container>
       </div>
     );

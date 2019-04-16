@@ -96,7 +96,7 @@ class EditOrder extends Component {
         <Container>
           <Form>
             <h1>Pedido nº {this.state.order_id}</h1>
-            <strong>Comanda nº{this.state.ticket.numComanda}</strong>
+            <strong>Comanda nº {this.state.ticket.numComanda}</strong>
             <strong>Mesa {this.state.order.desk}</strong>
             <hr />
             {this.state.error && <p>{this.state.error}</p>}
