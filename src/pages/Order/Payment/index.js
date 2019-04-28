@@ -24,6 +24,7 @@ class Payment extends Component {
         formPay: "",
         money: "",
         trocoMessage: '',
+        sucess: ''
     }
 
     async componentDidMount() {
@@ -44,17 +45,12 @@ class Payment extends Component {
 
     closeModal = () => {
         let { open } = this.state
-        this.setState({ open: !open })
-    }
-
-    logState = () => {
-        console.log(`Drawer now ${this.state.open ? 'open' : 'closed'}`)
+        this.setState({ open: !open, formPay: '', trocoMessage: '', sucess: '', money: '' })
     }
 
     openModal = () => {
         let { open } = this.state;
         this.setState({ open: !open });
-        console.log(this.state.open)
     }
 
     showProduct = id => {
@@ -63,35 +59,50 @@ class Payment extends Component {
             product.id === id ? product.description : null
         );
         return description;
-    };
-
-    receivePay = (e) => {
-        e.preventDefault();
-        console.log(this.state.formPay)
     }
+
 
     payment = async (e) => {
         e.preventDefault()
         const { formPay, order, money } = this.state;
-        const troco = money - order.total_comanda
-        if (troco < 0)
-            alert(`Ainda falta R$ ${troco*(-1)}`)
 
-        this.setState({ trocoMessage: `Troco: R$ ${troco}` })
+        if (formPay === 'cash') {
+            const troco = money - order.total_comanda
 
-     //   await api.post(`/pay/${order.id}`, formPay, money)
-
-        console.log(troco)
+            if (troco < 0) {
+                alert(`Ainda falta R$ ${troco * (-1)}`)
+            }
+            if (troco >= 0) {
+                this.setState({
+                    trocoMessage: `Troco: R$ ${troco}`,
+                    sucess: 'Pagamento realizado com sucesso'
+                });
+            }
+        }
     }
+
 
     handleSelect = e => {
         e.preventDefault();
         this.setState({ formPay: e.target.value });
     };
 
+    closeAndConfirmOrder = async (e) => {
+        e.preventDefault();
+
+        const { order } = this.state;
+
+        this.setState({
+            sucess: 'Pagamento realizado com sucesso'
+        });
+
+        await api.put(`/pay/${order.id}`)
+
+        alert(this.state.sucess);
+        this.props.history.push('/orders')
+    }
 
     render() {
-
         return (
             <div>
                 <Header />
@@ -101,24 +112,22 @@ class Payment extends Component {
                         <strong>Comanda nº {this.state.ticket.numComanda}</strong>
                         <strong>Mesa {this.state.order.desk}</strong>
                         <hr />
-                        <div>
-                            <ul>
-                                {this.state.product_orders.map(product_order => (
-                                    <div key={product_order.id}>
-                                        <li>
-                                            <strong className='products'>
-                                                {this.showProduct(product_order.product_id)}
-                                            </strong>
-                                        </li>
-                                        <li>Quantidade: {product_order.qnt}</li>
-                                        <li>R$ {product_order.total}</li>
-                                    </div>
-                                ))}
-                            </ul>
-                        </div>
+                        <ul>
+                            {this.state.product_orders.map(product_order => (
+                                <div className='products' key={product_order.id}>
+                                    <li>
+                                        <strong>
+                                            {this.showProduct(product_order.product_id)}
+                                        </strong>
+                                    </li>
+                                    <li>Quantidade: {product_order.qnt}</li>
+                                    <li>R$ {product_order.total}</li>
+                                </div>
+                            ))}
+                        </ul>
                     </div>
                     <div className='button-containner'>
-                        <button onClick={this.openModal}>Abrir</button>
+                        <button className='confirm' onClick={this.openModal}>Receber</button>
                     </div>
                 </Container>
                 <Drawer
@@ -126,16 +135,12 @@ class Payment extends Component {
                     onOpen={() => this.openModal}
                 >
                     <Container>
-                        <Form>
-                            <select value={this.state.value} onChange={this.handleSelect}>
-                                <option value="" disabled selected hidden>Escolha a opção de pagamento</option>
-                                <option value="card">Cartão Débito / Crédito</option>
-                                <option value="money">Dinheiro</option>
-                            </select>
-                            <button onClick={this.receivePay}>Pagamento</button>
-
-                        </Form>
-                        {(this.state.formPay === 'money') && (
+                        <select value={this.state.value} onChange={this.handleSelect}>
+                            <option value="" disabled selected hidden>Escolha a opção de pagamento</option>
+                            <option value="card">Cartão Débito / Crédito</option>
+                            <option value="cash">Dinheiro</option>
+                        </select>
+                        {(this.state.formPay === 'cash') && (
                             <Form onSubmit={this.payment}>
                                 <input
                                     type="number"
@@ -145,17 +150,26 @@ class Payment extends Component {
                                 <button type='submit'>
                                     Receber
                                 </button>
-                                {this.state.trocoMessage && <p>{this.state.trocoMessage}</p>}
+                                {this.state.trocoMessage &&
+                                    <div>
+                                        <p>{this.state.trocoMessage}</p>
+                                        <button className='confirm' onClick={this.closeAndConfirmOrder}>
+                                            Confirmar e encerrar comanda
+                                    </button>
+                                    </div>
+                                }
                             </Form>
                         )}
                         {(this.state.formPay === 'card') && (
-                            <h1>Card</h1>
+                            <button className='confirm' onClick={this.closeAndConfirmOrder}>
+                                Confirmar e encerrar comanda
+                            </button>
                         )}
-                        <button onClick={this.closeModal}>Fecha</button>
+                        <button className='delete' onClick={this.closeModal}>Cancelar</button>
                     </Container>
                 </Drawer>
             </div>
-        );
+        )
     }
 }
 

@@ -61,4 +61,22 @@ export const Form = styled.form`
   .manager {
     height: 15px !important;
   }
+
+  .check {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    width: 90%;
+    margin: 15px;
+
+   span{
+     margin: 0px !important;
+     padding: 10px !important;
+   } 
+   input{
+     margin: 0px !important;
+     padding: 5px !important;
+     width: 25px !important;
+   }
+  }
 `;

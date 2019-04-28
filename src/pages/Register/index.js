@@ -73,7 +73,7 @@ class Register extends Component {
               placeholder="Confirme sua senha"
               onChange={e => this.setState({ confirmPassword: e.target.value })}
             />
-            <div>
+            <div className='check'>
               <input
                 className="manager"
                 id="manager"

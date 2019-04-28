@@ -5,35 +5,39 @@ export const Container = styled.div`
   margin: 50px auto;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
+  background: #fff;
+  padding: 30px;
 
   strong {
     margin: 15px;
-    padding: 5px;
+    margin-left: 0px;
+  }
+
+  div{
+    width: 100%;
   }
 
   .products {
-    margin-left: 0px;
-    padding: 0px
+    margin-left: 0px !important;
+    margin: 10px;
+    padding: 0px;
+    width: 100%;
+    justify-content: flex-start !important;
+    background-color: #fff;
   }
 
   ul {
     list-style: none;
     color: #777;
-    width: 400px;
-    padding: 20px;
-    margin: 10px;
-
-    div {
-      background: #fff;
-      border-radius: 5px;
-      width: 530px;
-    }
+    width: 100%;
+    padding: 10px;
+    margin: 0px;
   }
 
   li {
-    margin: 5px;
+    margin: 0px;
     padding: 5px;
   }
 
@@ -42,6 +46,7 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 90%;
   }
 
   button {
@@ -68,6 +73,27 @@ export const Container = styled.div`
     }
   }
 
+  .confirm {
+    color: #fff;
+    font-size: 16px;
+    background: #004002;
+    height: 35px;
+    border: 0;
+    border-radius: 5px;
+    width: 90%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #008004;
+    }
+  }
+
   .delete {
     color: #fff;
     font-size: 16px;
@@ -87,6 +113,16 @@ export const Container = styled.div`
     &:hover {
       background: #ff530d;
     }
+  }
+
+  select {
+    height: 46px;
+    margin-bottom: 15px;
+    padding: 0 20px;
+    color: #777;
+    font-size: 15px;
+    width: 100%;
+    border: 1px solid #ddd;
   }
 `;
 
@@ -111,7 +147,7 @@ export const Form = styled.form`
 
   p {
     color: #ff3333;
-    margin-bottom: 15px;
+    margin: 15px;
     border: 1px solid #ff3333;
     padding: 10px;
     width: 100%;
@@ -139,17 +175,7 @@ export const Form = styled.form`
     text-align: center;
   }
 
-  select {
-    height: 46px;
-    margin-bottom: 15px;
-    padding: 0 20px;
-    color: #777;
-    font-size: 15px;
-    width: 100%;
-    border: 1px solid #ddd;
-  }
-
-  button {
+    button {
     color: #fff;
     font-size: 16px;
     background: #0f0ee8;
