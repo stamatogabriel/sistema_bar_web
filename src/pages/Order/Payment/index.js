@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Header from "../../../components/header";
 import Drawer from 'react-drag-drawer';
 
-import { Container } from './styles';
+import { Container, Form } from './styles';
 
 class Payment extends Component {
     static propTypes = {
@@ -20,8 +20,10 @@ class Payment extends Component {
         ticket: {},
         products: [],
         product_orders: [],
-        toggle: true,
-        open: false
+        open: false,
+        formPay: "",
+        money: "",
+        trocoMessage: '',
     }
 
     async componentDidMount() {
@@ -40,24 +42,20 @@ class Payment extends Component {
     }
 
 
-    toggle = () => {
-        let { toggle } = this.state
-        this.setState({ toggle: !toggle })
+    closeModal = () => {
+        let { open } = this.state
+        this.setState({ open: !open })
     }
 
     logState = () => {
         console.log(`Drawer now ${this.state.open ? 'open' : 'closed'}`)
     }
 
-    openModal = () =>{
-        let {open} = this.state;
+    openModal = () => {
+        let { open } = this.state;
         this.setState({ open: !open });
         console.log(this.state.open)
     }
-
-
-
-
 
     showProduct = id => {
         const { products } = this.state;
@@ -66,6 +64,31 @@ class Payment extends Component {
         );
         return description;
     };
+
+    receivePay = (e) => {
+        e.preventDefault();
+        console.log(this.state.formPay)
+    }
+
+    payment = async (e) => {
+        e.preventDefault()
+        const { formPay, order, money } = this.state;
+        const troco = money - order.total_comanda
+        if (troco < 0)
+            alert(`Ainda falta R$ ${troco*(-1)}`)
+
+        this.setState({ trocoMessage: `Troco: R$ ${troco}` })
+
+     //   await api.post(`/pay/${order.id}`, formPay, money)
+
+        console.log(troco)
+    }
+
+    handleSelect = e => {
+        e.preventDefault();
+        this.setState({ formPay: e.target.value });
+    };
+
 
     render() {
 
@@ -94,14 +117,42 @@ class Payment extends Component {
                             </ul>
                         </div>
                     </div>
-                    <button onClick={this.openModal}>Abrir</button>
+                    <div className='button-containner'>
+                        <button onClick={this.openModal}>Abrir</button>
+                    </div>
                 </Container>
                 <Drawer
                     open={this.state.open}
                     onOpen={() => this.openModal}
-                    onRequestClose={this.toggle}
                 >
-                    <div>Hey Im inside the drawer!</div>
+                    <Container>
+                        <Form>
+                            <select value={this.state.value} onChange={this.handleSelect}>
+                                <option value="" disabled selected hidden>Escolha a opção de pagamento</option>
+                                <option value="card">Cartão Débito / Crédito</option>
+                                <option value="money">Dinheiro</option>
+                            </select>
+                            <button onClick={this.receivePay}>Pagamento</button>
+
+                        </Form>
+                        {(this.state.formPay === 'money') && (
+                            <Form onSubmit={this.payment}>
+                                <input
+                                    type="number"
+                                    placeholder="Valor recebido"
+                                    onChange={e => this.setState({ money: e.target.value })}
+                                />
+                                <button type='submit'>
+                                    Receber
+                                </button>
+                                {this.state.trocoMessage && <p>{this.state.trocoMessage}</p>}
+                            </Form>
+                        )}
+                        {(this.state.formPay === 'card') && (
+                            <h1>Card</h1>
+                        )}
+                        <button onClick={this.closeModal}>Fecha</button>
+                    </Container>
                 </Drawer>
             </div>
         );

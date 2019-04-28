@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  justify-content: center;
 
   strong {
     margin: 15px;
@@ -27,7 +28,7 @@ export const Container = styled.div`
     div {
       background: #fff;
       border-radius: 5px;
-      width: 600px;
+      width: 530px;
     }
   }
 
@@ -41,6 +42,30 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+  }
+
+  button {
+    color: #fff;
+    font-size: 16px;
+    background: #0f0ee8;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    width: 50%;
+    margin: 5px;
+    border-radius: 5px;
+    width: 90%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #0344FF;
+    }
   }
 
   .delete {
@@ -93,7 +118,6 @@ export const Form = styled.form`
     text-align: center;
   }
   input {
-    flex: 1;
     height: 46px;
     margin-bottom: 15px;
     padding: 0 20px;
@@ -106,8 +130,16 @@ export const Form = styled.form`
     }
   }
 
+  p {
+    color: #004018;
+    margin-bottom: 15px;
+    border: 1px solid #004018;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
   select {
-    flex: 1;
     height: 46px;
     margin-bottom: 15px;
     padding: 0 20px;

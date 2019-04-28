@@ -83,7 +83,6 @@ export const Form = styled.form`
     text-align: center;
   }
   input {
-    flex: 1;
     height: 46px;
     margin-bottom: 15px;
     padding: 0 20px;
@@ -97,7 +96,6 @@ export const Form = styled.form`
   }
 
   select {
-    flex: 1;
     height: 46px;
     margin-bottom: 15px;
     padding: 0 20px;
