@@ -45,6 +45,7 @@ class ShowTickets extends Component {
        
     }
 
+    printTicket = (id) => this.props.history.push(`/qrcode/${id}`)
 
     render() {
         return (
@@ -59,6 +60,7 @@ class ShowTickets extends Component {
                             <div className={ticket.inUse.toString()}> </div>
                             <button onClick={() => this.handleTicketDelete(ticket.id)} className='excluir'>Excluir Comanda</button>
                             <button onClick={() => this.handleOrderCreate(ticket.id)} >Fazer Pedido</button>
+                            <button onClick={() => this.printTicket(ticket.id)} className='print'>Imprimir Comanda</button>
                         </article>
                     )
                     )}

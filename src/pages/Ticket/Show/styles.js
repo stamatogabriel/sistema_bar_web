@@ -54,6 +54,13 @@ export const Container = styled.div`
       background: #FF530D;
         }
     }
+
+    .print {
+    background: #004002;
+    &:hover {
+      background: #008004;
+    }
+  }
     div {
       height: 15px;
       width: 15px;
