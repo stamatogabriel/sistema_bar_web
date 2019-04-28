@@ -29,7 +29,7 @@ class ShowOrders extends Component {
                 <div>
                 <h1>Comanda n° {this.state.ticket.numComanda}</h1>
                 </div>
-                <QRCode value={`localhost:3000/comanda/${this.state.ticket.id}`} />
+                <QRCode value={`http://192.168.0.73:3000/comanda/${this.state.ticket.id}`} />
             </Div>)
 
     }

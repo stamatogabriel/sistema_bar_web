@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import api from "../../../services/api";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import Header from "../../../components/header";
 
 import { Container } from './styles';
 
@@ -53,7 +52,6 @@ class ShowCustomer extends Component {
     render() {
         return (
             <div>
-                <Header />
                 <Container>
                     <div>
                         <h1>Pedido nº {this.state.order.id}</h1>
@@ -72,7 +70,7 @@ class ShowCustomer extends Component {
                                     <li>R$ {product_order.total}</li>
                                 </div>
                             ))}
-                            <li><strong>Mesa {this.state.order.total_comanda}</strong></li>
+                            <li><strong>Valor total da comanda: R$ {this.state.order.total_comanda}</strong></li>
                         </ul>
                     </div>
                 </Container>
