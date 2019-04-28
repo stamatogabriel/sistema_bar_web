@@ -14,6 +14,8 @@ import CreateOrders from './pages/Order/Create';
 import ShowOrders from './pages/Order/Show';
 import EditOrders from './pages/Order/Edit';
 import Payment from './pages/Order/Payment';
+import QrCode from './pages/Order/QrCode';
+import ShowCustomer from './pages/Order/ShowCustomer';
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -49,6 +51,8 @@ const Routes = () => (
         <PrivateRoute path='/orders' component={ShowOrders} />
         <PrivateRoute path='/edit_orders/:id' component={EditOrders} />
         <PrivateRoute path='/payment/:id' component={Payment} />
+        <PrivateRoute path='/qrcode/:id' component={QrCode} />
+        <Route path='/comanda/:id' component={ShowCustomer} />
       </Switch>
   </BrowserRouter>
 );
