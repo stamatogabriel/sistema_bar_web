@@ -32,6 +32,7 @@ class ShowProducts extends Component {
             <div>
                 <Header />
                 <Container>
+                <Link to={'/create_products'} className='confirm'>Cadastrar Produto</Link>
                     {this.state.products.map(product => (
                         <article key={product.id}>
                             <strong>{product.description}</strong>
