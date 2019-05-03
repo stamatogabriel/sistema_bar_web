@@ -19,24 +19,40 @@ class CreateProduct extends Component {
     minStock: ""
   };
 
+    parserFloat = (priceProduct) => {
+    const price = parseFloat(priceProduct.replace(',', '.'));
+    
+    return price;
+  }
+
   handleCreate = async e => {
     e.preventDefault();
-    const { description, price, stock, minStock } = this.state;
+    const { description, stock, minStock } = this.state;
+
+    let { price } = this.state;
+
     if (!description || !price || !stock || !minStock) {
       this.setState({
         error: "Preencha todos os campos para continuar"
       });
+
     } else {
+
+      price = this.parserFloat(price);
+      
       try {
-        await api.post("/products", { description, price, stock, minStock });
+        const product = await api.post("/products", { description, price, stock, minStock });
+
         this.setState({
           sucess: "Produto cadastrado com sucesso!",
         });
+        console.log(product)
         alert(this.state.sucess);
-      } catch {
+      } catch (err) {
         this.setState({
           error: "Algo deu errado. Por favor, tente novamente."
         });
+        console.log(err)
       }
     }
   };
@@ -56,17 +72,19 @@ class CreateProduct extends Component {
               onChange={e => this.setState({ description: e.target.value })}
             />
             <input
-              type="number"
+              type="text"
               placeholder="Preço"
               onChange={e => this.setState({ price: e.target.value })}
             />
             <input
               type="number"
+              min={0}
               placeholder="Estoque Inicial"
               onChange={e => this.setState({ stock: e.target.value })}
             />
             <input
               type="number"
+              min={0}
               placeholder="Estoque mínimo"
               onChange={e => this.setState({ minStock: e.target.value })}
             />
