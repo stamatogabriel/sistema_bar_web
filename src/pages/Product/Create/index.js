@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import api from "../../../services/api";
 import { withRouter } from "react-router-dom";
-import { Form, Container } from "./styles";
 import PropTypes from "prop-types";
+import MaskedInput from 'react-text-mask';
+import { createNumberMask } from 'text-mask-addons';
+
+import api from "../../../services/api";
 import Header from "../../../components/header";
+
+import { Form, Container } from "./styles";
 
 class CreateProduct extends Component {
   static propTypes = {
@@ -20,10 +24,13 @@ class CreateProduct extends Component {
   };
 
     parserFloat = (priceProduct) => {
-    const price = parseFloat(priceProduct.replace(',', '.'));
+    const price = parseFloat(priceProduct
+                                  .replace(',', '.')
+                                  .replace('R$', '')
+                                  ).tofixed(2);
     
     return price;
-  }
+  };
 
   handleCreate = async e => {
     e.preventDefault();
@@ -52,12 +59,20 @@ class CreateProduct extends Component {
         this.setState({
           error: "Algo deu errado. Por favor, tente novamente."
         });
-        console.log(err)
       }
     }
   };
 
   render() {
+
+    const numberMask = createNumberMask({
+      prefix: 'R$ ',
+      allowDecimal: true,
+      thousandsSeparatorSymbol: '.',
+      decimalSymbol: ',',
+      requireDecimal: true
+    });
+
     return (
       <div>
         <Header />
@@ -71,8 +86,8 @@ class CreateProduct extends Component {
               placeholder="Descrição do Produto"
               onChange={e => this.setState({ description: e.target.value })}
             />
-            <input
-              type="text"
+            <MaskedInput
+              mask={numberMask}
               placeholder="Preço"
               onChange={e => this.setState({ price: e.target.value })}
             />

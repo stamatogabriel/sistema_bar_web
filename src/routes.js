@@ -19,8 +19,6 @@ import ShowCustomer from './pages/Order/ShowCustomer';
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-import "react-router-modal/css/react-router-modal.css";
-
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}

@@ -27,6 +27,13 @@ class ShowProducts extends Component {
 
     }
 
+    parserMoney = (priceProduct) => {
+
+        const price = priceProduct.toString().replace('.', ',');
+
+        return price;
+      };
+
     render() {
         return (
             <div>
@@ -36,7 +43,7 @@ class ShowProducts extends Component {
                     {this.state.products.map(product => (
                         <article key={product.id}>
                             <strong>{product.description}</strong>
-                            <p>Preço: R$ {product.price}</p>
+                            <p>Preço: R$ {this.parserMoney(product.price)}</p>
                             <p>Estoque atual: {product.stock}</p>
                             <p>Estoque mínimo: {product.minStock}</p>
                             <Link to={`/products/${product.id}`}>Opções</Link>
