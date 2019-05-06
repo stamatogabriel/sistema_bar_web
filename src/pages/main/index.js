@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "../../components/header";
 import { Container } from "./styles";
 import { withRouter, Link } from "react-router-dom";
-import Menu from "../../../components/Menu";
+import Menu from "../../components/Menu";
 import { FaUserAlt, FaClipboardList, FaCocktail, FaShoppingBasket } from 'react-icons/fa'
 
 class Main extends Component {

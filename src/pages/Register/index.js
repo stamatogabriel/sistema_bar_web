@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { Form, Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../components/header";
-import Menu from "../../../components/Menu";
+import Menu from "../../components/Menu";
 
 
 class Register extends Component {
