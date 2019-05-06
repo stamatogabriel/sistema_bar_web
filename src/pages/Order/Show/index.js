@@ -6,6 +6,7 @@ import { distanceInWords } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
+import Menu from "../../../components/Menu";
 
 class ShowOrders extends Component {
   static propTypes = {
@@ -48,6 +49,7 @@ class ShowOrders extends Component {
     return (
       <div>
         <Header />
+        <Menu />
         <Container>
           <h1>Pedidos</h1>
           {this.state.orders.map(order => (

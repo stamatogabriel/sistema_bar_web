@@ -4,6 +4,7 @@ import api from "../../../services/api";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
+import Menu from "../../../components/Menu";
 import Drawer from 'react-drag-drawer';
 
 import { Container, Form } from './styles';
@@ -106,6 +107,7 @@ class Payment extends Component {
         return (
             <div>
                 <Header />
+                <Menu />
                 <Container>
                     <div>
                         <h1>Pedido nº {this.state.order.id}</h1>

@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
+import Menu from "../../../components/Menu";
 
 class ShowTickets extends Component {
     static propTypes = {
@@ -51,6 +52,7 @@ class ShowTickets extends Component {
         return (
             <div>
                 <Header />
+                <Menu />
                 <Container>
                     <h1>Comandas</h1>
                     {this.state.tickets.map(ticket => (

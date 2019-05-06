@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom";
 import api from "../../../services/api";
 
 import Header from "../../../components/header";
+import Menu from "../../../components/Menu";
+
 import { Div } from "./styles";
 
 class EditProducts extends Component {
@@ -59,6 +61,7 @@ class EditProducts extends Component {
     return (
       <div>
         <Header />
+        <Menu />
         <Div>
           <form onSubmit={this.handleEdit}>
         <h1>{response.description}</h1>

@@ -4,6 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 import { Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
+import Menu from "../../../components/Menu";
 
 class ShowProducts extends Component {
     static propTypes = {
@@ -38,6 +39,7 @@ class ShowProducts extends Component {
         return (
             <div>
                 <Header />
+                <Menu />
                 <Container>
                 <Link to={'/create_products'} className='confirm'>Cadastrar Produto</Link>
                     {this.state.products.map(product => (

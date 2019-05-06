@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { Form, Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
+import Menu from "../../../components/Menu";
 
 class CreateTicket extends Component {
     static propTypes = {
@@ -42,6 +43,7 @@ class CreateTicket extends Component {
         return (
             <div>
                 <Header />
+                <Menu />
                 <Container>
                     <Form onSubmit={this.handleCreate}>
                         <h1>Cadastro de Comandas</h1>

@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { Form, Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
+import Menu from "../../../components/Menu";
 
 class EditOrder extends Component {
   static propTypes = {
@@ -93,6 +94,7 @@ class EditOrder extends Component {
     return (
       <div>
         <Header />
+        <Menu />
         <Container>
           <Form>
             <h1>Pedido nº {this.state.order_id}</h1>

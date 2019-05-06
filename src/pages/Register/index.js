@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { Form, Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../components/header";
+import Menu from "../../../components/Menu";
 
 
 class Register extends Component {
@@ -53,6 +54,7 @@ class Register extends Component {
     return (
       <div>
         <Header />
+        <Menu />
         <Container>
           <Form onSubmit={this.handleRegister}>
             <h1>Cadastro de Usuário</h1>

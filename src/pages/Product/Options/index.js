@@ -4,6 +4,8 @@ import { withRouter, a } from "react-router-dom";
 import api from "../../../services/api";
 
 import Header from "../../../components/header";
+import Menu from "../../../components/Menu";
+
 import { Div } from "./styles";
 
 class OptionProducts extends Component {
@@ -36,6 +38,7 @@ class OptionProducts extends Component {
     return (
       <div>
         <Header />
+        <Menu />
         <Div>
           <h1>{product.description}</h1>
           <hr/>

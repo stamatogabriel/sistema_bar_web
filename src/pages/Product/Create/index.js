@@ -6,6 +6,7 @@ import { createNumberMask } from 'text-mask-addons';
 
 import api from "../../../services/api";
 import Header from "../../../components/header";
+import Menu from '../../../components/Menu';
 
 import { Form, Container } from "./styles";
 
@@ -76,6 +77,7 @@ class CreateProduct extends Component {
     return (
       <div>
         <Header />
+        <Menu />
         <Container>
           <Form onSubmit={this.handleCreate}>
             <h1>Cadastro de Produto</h1>
