@@ -61,9 +61,9 @@ class ShowTickets extends Component {
                             <strong>Comanda nº {ticket.numComanda}</strong>
                             <p>Status:</p>
                             <div className={ticket.inUse.toString()}> </div>
-                            <button onClick={() => this.handleTicketDelete(ticket.id)} className='excluir'>Excluir Comanda</button>
                             <button onClick={() => this.handleOrderCreate(ticket.id)} >Fazer Pedido</button>
                             <button onClick={() => this.printTicket(ticket.id)} className='print'>Imprimir Comanda</button>
+                            <button onClick={() => this.handleTicketDelete(ticket.id)} className='excluir'>Excluir Comanda</button>
                         </article>
                     )
                     )}

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Header from "../../components/header";
 import { Container } from "./styles";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Menu from "../../components/Menu";
-import { FaUserAlt, FaClipboardList, FaCocktail, FaShoppingBasket } from 'react-icons/fa'
 
 class Main extends Component {
 
@@ -13,26 +12,8 @@ class Main extends Component {
         <Header />
         <Menu />
         <Container>
-          <div className='button-containner'>
-          <Link to='/register'>
-          <FaUserAlt size={24} color='#fff' />
-          <span>Cadastrar Usuário</span> 
-          </Link>
-          <Link to='/products'>
-          <FaCocktail size={24} color='#fff' />
-          <span>Listar Produtos</span>
-          </Link>
-          </div>
-          <div className='button-containner'>
-          <Link to='/tickets'>
-          <FaClipboardList size={24} color='#fff' />
-          <span>Listar Comandas</span>
-          </Link>
-          <Link to='/orders'>
-          <FaShoppingBasket size={24} color='#fff' />          
-          <span>Ordens</span>
-          </Link>
-          </div>
+            <h2>Seja bem vindo</h2>
+            <p>Utilize o menu lateral para navegação nas funcionalidades do sistema.</p>          
         </Container>
       </div>
     );

@@ -7,14 +7,20 @@ export const Head = styled.header`
     background: #282434;
     font-size: 25px;
     font-weight: bold;
-    color: #fff;
+    color: #7c7c7c;
     display: flex;
     justify-content: center;
     align-items: center;
     top: 0;
 
-    a{
-        color: white;
-        text-decoration: none;
+    div {
+        display: flex;
+        align-items: left;
+        width: 100%;
+        margin: auto 100px auto;
+    }
+
+    h3 {
+        color: #7c7c7c;
     }
     `;

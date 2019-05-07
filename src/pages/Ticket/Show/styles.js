@@ -52,7 +52,7 @@ export const Container = styled.div`
     color: #fff;
     font-size: 14px;
     background: #0F0EE8;
-    height: 20px;
+    height: 40px;
     border: 0;
     border-radius: 5px;
     width: 150px;
