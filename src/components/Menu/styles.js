@@ -1,33 +1,58 @@
 import styled from "styled-components";
 
 export const Sidenav = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
-  width: 160px;
+  width: 100px;
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
-  background-color: #0F0EE8;
+  background-color: #282434;
   overflow-x: hidden;
   padding-top: 20px;
+  margin-top: 40px;
 };
+
+
+ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  align-items: center;
+  padding: auto;
+}
+
+li {
+  display: flex;
+  width: 100%;
+    div {
+      width: 100%;
+    }
+}
+
 
  a {
-  padding: 6px 8px 6px 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  align-content: center;
+  padding: 10px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
+  font-size: 14px;
+  color: #8c8c8c;
+  width: 100%;
+  span {
+    margin: 5px;
+  }
 };
 
- a:hover {
+li a:hover {
   color: #f1f1f1;
-};
-
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+  background-color: #201e29;
 };
 
 @media screen and (max-height: 450px) {

@@ -2,10 +2,30 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 700px;
-  margin: 20px auto 0;
+  margin: 80px auto 0;
   padding: 0 20px;
 
-
+  .confirm {
+    color: #fff;
+    font-size: 16px;
+    background: #004002;
+    height: 35px;
+    border: 0;
+    border-radius: 5px;
+    width: 30%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #008004;
+    }
+  }
+  
   article{
     border: 1px solid #ddd;
     border-radius: 5px;

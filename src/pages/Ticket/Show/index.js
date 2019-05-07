@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import api from "../../../services/api";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { Container } from "./styles";
 import PropTypes from "prop-types";
 import Header from "../../../components/header";
@@ -55,6 +55,7 @@ class ShowTickets extends Component {
                 <Menu />
                 <Container>
                     <h1>Comandas</h1>
+                    <Link to={'/create_tickets'} className='confirm'>Cadastrar Comanda</Link>
                     {this.state.tickets.map(ticket => (
                         <article key={ticket.id}>
                             <strong>Comanda nº {ticket.numComanda}</strong>

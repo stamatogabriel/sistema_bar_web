@@ -8488,13 +8488,6 @@ react-is@^16.6.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.3.tgz#4ad8b029c2a718fc0cfc746c8d4e1b7221e5387d"
   integrity sha512-Y4rC1ZJmsxxkkPuMLwvKvlL1Zfpbcu+Bf4ZigkHup3v9EfdYhAlWAaVyA19olXq2o2mGn0w+dFKvk3pVVlYcIA==
 
-react-masked-text@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-masked-text/-/react-masked-text-0.4.1.tgz#be747a6680ea93d54b6552c9fbb472ab057b030d"
-  integrity sha512-M3V2IQcucxfZumFtsc3k7q1FWvsKd08fgtwgtByCueGV6k6UFm1XNgU+m6pLMHYtFuVPR0E6+j22o3zJhDGbdw==
-  dependencies:
-    tinymask "1.0.2"
-
 react-motion@~0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"
@@ -9901,11 +9894,6 @@ timsort@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
-
-tinymask@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/tinymask/-/tinymask-1.0.2.tgz#df3775a94087b0d3d056c256e8923c01b7ec0941"
-  integrity sha1-3zd1qUCHsNPQVsJW6JI8AbfsCUE=
 
 tmp@^0.0.33:
   version "0.0.33"

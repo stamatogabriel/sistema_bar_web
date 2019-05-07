@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Div = styled.div`
   max-width: 700px;
-  margin: 20px;
+  margin: 120px auto 0;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
@@ -11,7 +11,6 @@ export const Div = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: left;
-  margin: 20px auto 0;
 
   input {
     flex: 2;
