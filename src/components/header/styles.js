@@ -25,7 +25,7 @@ export const Head = styled.header`
     }
 
     span {
-        font-size: 20px;
+        font-size: 12px;
     }
 
     .buttonContainer {
@@ -33,24 +33,39 @@ export const Head = styled.header`
         flex-direction: column;
         align-items: right;
         margin-right: 15px;
+        margin-top: 10px;
         width: 30%;
-        padding: 15px;
-    }
+     }
+
+     .iconContainer {
+         width: 5%;
+         margin: 0 0 0 10px;
+     }
 
     .menu {
         display: flex;
         float: right;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         margin: 5px  auto;
         color: #fff;
         background-color: #190d18;
         border-radius: 5px;
         border: solid 0.5px #190d18;
-        font-size: 14px;
+        font-size: 12px;
         padding: 5px;
-        align-items: center;
+        width: 140px;
         a{
             padding: 10px;
+            width: 100%;
+            color: #7c7c7c;
+            text-decoration: none;
+            &:hover {
+            border: solid 0.5px #201e29;
+            background-color: #201e29;
+            color: #fff;
+            }
         }
     }
 
@@ -58,11 +73,12 @@ export const Head = styled.header`
         display: flex;
         flex-direction: row;
         color: #7c7c7c;
-        background-color: #201e29;
+        background-color: #190d18;
         justify-content: center;
+        align-items: center;
         border: none;
         margin: auto;
-        width: 100%;
+        padding: 10px;
         height: 40px;
         border-radius: 5px;
         font-size: 14px;
@@ -70,7 +86,7 @@ export const Head = styled.header`
         cursor: pointer;
         &:hover{
             color: #fff;
-            background-color: #190d18;
+            background-color: #201e29;
         }
         span {
             margin-left: 5px;
