@@ -17,6 +17,16 @@ class CreateTicket extends Component {
         numComanda: "",
     };
 
+    async UNSAFE_componentWillMount(){
+        const user = await api.get("/get_user");
+        this.setState({ user: user.data });
+    
+        if (this.state.user.manager !== true){
+            alert("Você não tem autorização para utilizar esta funcionalidade.")
+            this.props.history.push('/app')
+        }
+    };
+
     handleCreate = async e => {
         e.preventDefault();
         const { numComanda } = this.state;

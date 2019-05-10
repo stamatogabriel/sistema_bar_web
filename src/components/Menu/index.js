@@ -14,7 +14,7 @@ class Menu extends Component {
     user: ""
   };
 
-  async componentDidMount() {
+  async UNSAFE_componentWillMount(){
     const user = await api.get("/get_user");
     this.setState({ user: user.data });
   }
@@ -60,9 +60,9 @@ class Menu extends Component {
             </li>
             <li>
               <div>
-                <Link to="/register">
+                <Link to="/show_users">
                   <MdAccountCircle size={30} />
-                  <span>Cadastrar Usuário</span>
+                  <span>Gerenciar Usuários</span>
                 </Link>
               </div>
             </li>

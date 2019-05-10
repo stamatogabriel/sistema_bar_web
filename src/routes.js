@@ -1,7 +1,6 @@
 import React from "react";
 
 import { isAuthenticated } from "./services/auth";
-import api from "./services/api";
 
 import SignIn from "./pages/SignIn";
 import Main from "./pages/main";
@@ -19,6 +18,7 @@ import EditOrders from "./pages/Order/Edit";
 import Payment from "./pages/Order/Payment";
 import QrCode from "./pages/Order/QrCode";
 import ShowCustomer from "./pages/Order/ShowCustomer";
+import ShowUsers from './pages/ShowUsers';
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -49,12 +49,13 @@ const Routes = () => (
       <PrivateRoute path="/orders" component={ShowOrders} />
       <PrivateRoute path="/payment/:id" component={Payment} />
       <PrivateRoute path="/register" component={Register} />
-      <PrivateRoute path="/products" component={ShowProducts} />
       <PrivateRoute path="/products/:id" component={OptionProducts} />
+      <PrivateRoute path="/products" component={ShowProducts} />
       <PrivateRoute path="/create_products" component={CreateProduct} />
       <PrivateRoute path="/edit_products/:id" component={EditProducts} />
       <PrivateRoute path="/create_tickets" component={CreateTickets} />
       <PrivateRoute path="/qrcode/:id" component={QrCode} />
+      <PrivateRoute path='/show_users' component={ShowUsers} />
     </Switch>
   </BrowserRouter>
 );

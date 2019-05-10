@@ -7,10 +7,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
 
 div { 
   background: #fff;
   border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .button-containner {

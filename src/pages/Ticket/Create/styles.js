@@ -8,16 +8,14 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 400px;
-  background: #fff;
+  width: 40%;
+  background-color: #fff;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  img {
-    width: 100px;
-    margin: 10px 0 40px;
-  }
+  border-radius: 5px;
+
   p {
     color: #ff3333;
     margin-bottom: 15px;
@@ -26,6 +24,7 @@ export const Form = styled.form`
     width: 100%;
     text-align: center;
   }
+  
   input {
     height: 46px;
     margin-bottom: 15px;

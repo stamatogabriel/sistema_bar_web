@@ -32,7 +32,6 @@ li {
     }
 }
 
-
  a {
   flex-direction: column;
   justify-content: center;

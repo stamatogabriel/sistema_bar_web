@@ -10,15 +10,27 @@ import { Div } from "./styles";
 
 class OptionProducts extends Component {
   state = {
-    product: {}
+    product: {},
+    price: '',
   };
+
+  async UNSAFE_componentWillMount(){
+    const user = await api.get("/get_user");
+    this.setState({ user: user.data });
+
+    if (this.state.user.manager !== true){
+        alert("Você não tem autorização para utilizar esta funcionalidade.")
+        this.props.history.push('/app')
+    }
+};
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-
+    
     const response = await api.get(`products/${id}`);
-
     this.setState({ product: response.data });
+
+    this.parserMoney();
   }
 
   handleProductDelete = async e => {
@@ -32,6 +44,12 @@ class OptionProducts extends Component {
     }
   }
 
+  parserMoney = () => {
+    let price = this.state.product.price.toFixed(2);
+    price = price.toString().replace(".", ",");
+    this.setState({ price });
+  };
+
   render() {
     const { product } = this.state;
 
@@ -42,7 +60,7 @@ class OptionProducts extends Component {
         <Div>
           <h1>{product.description}</h1>
           <hr/>
-          <p>Preço: R$ {product.price}</p>
+          <p>Preço: R$ {this.state.price}</p>
           <p>Quantidade em estoque: {product.stock}</p>
           <p>Estoque mínimo: {product.minStock}</p>
           <a href={`/edit_products/${product.id}`}>Editar Produto</a>

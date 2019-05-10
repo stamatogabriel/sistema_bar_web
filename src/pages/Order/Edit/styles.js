@@ -2,28 +2,34 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 600px;
-  margin: 120px auto 0;
+  margin: 120px auto;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
 
   ul {
     list-style: none;
     color: #777;
-    width: 400px;
+    width: 100%;
     padding: 20px;
     margin: 10px;
+
+    li {
+      margin: 5px;
+      padding: 5px;
+      width: 100%;
+    }
 
     div {
       background: #fff;
       border-radius: 5px;
-      width: 400px;
+      width: 500px;
+      margin: 0;
     }
-  }
-
-  li {
-    margin: 5px;
-    padding: 5px;
   }
 
   .button-containner {
@@ -31,6 +37,7 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
 
   .delete {
@@ -40,7 +47,7 @@ export const Container = styled.div`
     height: 35px;
     border: 0;
     border-radius: 5px;
-    width: 50%;
+    width: 70%;
     transition: all 0.2s;
     font-weight: bold;
     margin: 5px;
@@ -56,22 +63,18 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 450px;
+  width: 90%;
   background: #fff;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  img {
-    width: 100px;
-    margin: 10px 0 40px;
-  }
-
   div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   p {
@@ -125,28 +128,28 @@ export const Form = styled.form`
     text-decoration: none;
     cursor: pointer;
     &:hover {
-      background: #0344FF;
+      background: #0344ff;
     }
   }
 
   .delete-order {
-  color: #fff;
-  font-size: 16px;
-  background: #ff0000;
-  height: 45px;
-  border: 0;
-  border-radius: 5px;
-  width: 50%;
-  transition: all 0.2s;
-  font-weight: bold;
-  margin: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  cursor: pointer;
-  &:hover {
-    background: #FF530D;
+    color: #fff;
+    font-size: 16px;
+    background: #ff0000;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    width: 50%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #ff530d;
+    }
   }
-
 `;

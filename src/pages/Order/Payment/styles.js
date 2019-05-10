@@ -9,28 +9,30 @@ export const Container = styled.div`
   justify-content: center;
   background: #fff;
   padding: 30px;
+  border-radius: 5px;
 
   strong {
     margin: 15px;
     margin-left: 0px;
   }
 
-  div{
+  div {
     width: 100%;
   }
 
   .products {
     margin-left: 0px !important;
-    margin: 10px;
-    padding: 0px;
+    padding: 5px;
     width: 100%;
     justify-content: flex-start !important;
     background-color: #fff;
+    border: solid 0.5px #ccc;
+    border-radius: 5px;
   }
 
   ul {
     list-style: none;
-    color: #777;
+    color: #888;
     width: 100%;
     padding: 10px;
     margin: 0px;
@@ -69,7 +71,7 @@ export const Container = styled.div`
     text-decoration: none;
     cursor: pointer;
     &:hover {
-      background: #0344FF;
+      background: #0344ff;
     }
   }
 
@@ -175,7 +177,7 @@ export const Form = styled.form`
     text-align: center;
   }
 
-    button {
+  button {
     color: #fff;
     font-size: 16px;
     background: #0f0ee8;
@@ -195,27 +197,28 @@ export const Form = styled.form`
     text-decoration: none;
     cursor: pointer;
     &:hover {
-      background: #0344FF;
+      background: #0344ff;
     }
   }
 
   .delete-order {
-  color: #fff;
-  font-size: 16px;
-  background: #ff0000;
-  height: 45px;
-  border: 0;
-  border-radius: 5px;
-  width: 50%;
-  transition: all 0.2s;
-  font-weight: bold;
-  margin: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  cursor: pointer;
-  &:hover {
-    background: #FF530D;
+    color: #fff;
+    font-size: 16px;
+    background: #ff0000;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    width: 50%;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: #ff530d;
+    }
   }
 `;

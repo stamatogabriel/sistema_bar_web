@@ -23,6 +23,16 @@ class Register extends Component {
     sucess: ""
   };
 
+  async UNSAFE_componentWillMount(){
+    const user = await api.get("/get_user");
+    this.setState({ user: user.data });
+
+    if (this.state.user.manager !== true){
+        alert("Você não tem autorização para utilizar esta funcionalidade.")
+        this.props.history.push('/app')
+    }
+};
+
   handleRegister = async e => {
     e.preventDefault();
     const { username, password, confirmPassword, manager } = this.state;
@@ -42,6 +52,7 @@ class Register extends Component {
           sucess: "Funcionário cadastrado com sucesso!"
         });
         alert(this.state.sucess);
+        this.props.history.push('/show_users');
       } catch {
         this.setState({
           error: "Algo deu errado. Por favor, tente novamente."

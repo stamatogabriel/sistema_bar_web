@@ -22,7 +22,8 @@ class EditOrder extends Component {
     ticket: "",
     error: "",
     sucess: "",
-    product_orders: []
+    product_orders: [],
+    price: ""
   };
 
   async componentDidMount() {
@@ -40,6 +41,8 @@ class EditOrder extends Component {
     this.setState({ order_id: id });
 
     this.setState({ product_orders: order.data[0].product_orders });
+
+    this.transformMoney();
   }
 
   handleDeleteProduct = async id => {
@@ -70,9 +73,10 @@ class EditOrder extends Component {
     const order = await api.get(`/order/${order_id}`);
     this.setState({ order: order.data[0] });
     this.setState({ product_orders: order.data[0].product_orders });
+    this.transformMoney();
   };
 
-  handleOrderDelete = async (id) => {
+  handleOrderDelete = async id => {
     try {
       await api.delete(`order/${id}`);
       alert("Pedido deletado com sucesso");
@@ -88,6 +92,19 @@ class EditOrder extends Component {
       product.id === id ? product.description : null
     );
     return description;
+  };
+
+  parserMoney = priceProduct => {
+    let price = priceProduct.toFixed(2);
+    price = price.toString().replace(".", ",");
+
+    return price;
+  };
+
+  transformMoney = () => {
+    let price = this.state.order.total_comanda.toFixed(2);
+    price = price.toString().replace(".", ",");
+    this.setState({ price });
   };
 
   render() {
@@ -124,7 +141,10 @@ class EditOrder extends Component {
                 </button>
                 <button
                   className="delete-order"
-                  onClick={() => {this.handleOrderDelete(this.state.order_id)}}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    this.handleOrderDelete(this.state.order_id);
+                  }}
                 >
                   Cancelar Pedido
                 </button>
@@ -141,7 +161,7 @@ class EditOrder extends Component {
                     </strong>
                   </li>
                   <li>Quantidade: {product_order.qnt}</li>
-                  <li>R$ {product_order.total}</li>
+                  <li>R$ {this.parserMoney(product_order.total)}</li>
                   <div className="button-containner">
                     <button
                       className="delete"
@@ -155,9 +175,7 @@ class EditOrder extends Component {
                 </div>
               ))}
             </ul>
-            <strong>
-              Total da Comanda: R$ {this.state.order.total_comanda}
-            </strong>
+            <strong>Total da Comanda: R$ {this.state.price}</strong>
           </div>
         </Container>
       </div>

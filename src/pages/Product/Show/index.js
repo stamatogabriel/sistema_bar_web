@@ -14,10 +14,19 @@ class ShowProducts extends Component {
     };
 
     state = {
-        products: []
+        products: [],
+        user: {}
     }
 
-    componentDidMount() {
+    async UNSAFE_componentWillMount(){
+        const user = await api.get("/get_user");
+        this.setState({ user: user.data });
+
+        if (this.state.user.manager !== true){
+            alert("Você não tem autorização para utilizar esta funcionalidade.")
+            this.props.history.push('/app')
+        }
+
         this.loadProducts();
     };
 
@@ -29,8 +38,8 @@ class ShowProducts extends Component {
     }
 
     parserMoney = (priceProduct) => {
-
-        const price = priceProduct.toString().replace('.', ',');
+        let price = priceProduct.toFixed(2)
+        price = price.toString().replace('.', ',');
 
         return price;
       };
@@ -41,6 +50,7 @@ class ShowProducts extends Component {
                 <Header />
                 <Menu />
                 <Container>
+                <h1>Produtos</h1>
                 <Link to={'/create_products'} className='confirm'>Cadastrar Produto</Link>
                     {this.state.products.map(product => (
                         <article key={product.id}>

@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const Div = styled.div`
-    height: 400px;
-    width: 400px;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid;
-    margin: 50px;
-    padding: 25px;
+    margin: 0;
+    padding: 0;
+    background-color: white;
 
     h1{
         margin: 25px;

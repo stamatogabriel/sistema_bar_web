@@ -4,6 +4,9 @@ export const Container = styled.div`
   max-width: 700px;
   margin: 80px auto 0;
   padding: 0 20px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
 
   .confirm {
     color: #fff;
@@ -60,5 +63,9 @@ export const Container = styled.div`
     &:hover {
       background: #0344FF;
         }
+    }
+
+    h1{
+      margin: 5px;
     }
 `;
